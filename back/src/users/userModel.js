@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
         minlength: 6,
         maxlength: 512
     },
-    role: {
-        type: String,
+    isBoss: {
+        type: Boolean,
         required: true
     },
     date: {
@@ -29,12 +29,12 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-async function createUser(name, email, password, role) {
+async function createUser(name, email, password, isBoss) {
     const user = new User({
         name: name,
         email: email,
         password: password,
-        role: role
+        isBoss: isBoss
     })
 
     try {
