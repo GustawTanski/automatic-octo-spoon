@@ -1,10 +1,34 @@
 import React from "react";
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { testLog } from "../redux/actions/test";
 
-export default function App() {
-	return (
-		<div>
-			<h1>Hello I'm working!</h1>
-		</div>
-	);
+class App extends React.Component {
+	runReducer() {
+		this.props.testLog("hello");
+	}
+
+	render() {
+		console.log(this.props);
+
+		return (
+			<div>
+				<h1>it works</h1>
+				<button onClick={this.runReducer.bind(this)}>click</button>
+				{this.props.tests.map(x => {
+					return <h1>{x}</h1>;
+				})}
+			</div>
+		);
+	}
 }
+
+const mapStateToProps = state => {
+	return {
+		tests: state.testReducer
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{ testLog }
+)(App);
