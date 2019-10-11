@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.1",
     "@typescript-eslint/parser": "^2.3.3",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
@@ -32,5 +33,9 @@
     "hooks": {
       "pre-commit": "npm run lint && prettier --write src/**/*.{js,css,json}"
     }
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4"
   }
 }
