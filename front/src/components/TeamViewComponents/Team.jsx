@@ -1,8 +1,5 @@
 import React from "react";
 
-
-
-
-export default function Team({ team }){
-    return 
+export default function Team({ team }) {
+	return;
 }

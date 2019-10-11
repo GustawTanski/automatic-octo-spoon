@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import Member from "../Member";
 import { List } from "antd";
 

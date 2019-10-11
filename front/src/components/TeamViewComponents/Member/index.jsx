@@ -4,7 +4,7 @@ import React from "react";
 import Avatar from "./Avatar";
 import Title from "./Title";
 import Actions from "./Actions";
-import "./index.css"
+import "./index.css";
 
 export default function Member({ name, position }) {
 	return (
