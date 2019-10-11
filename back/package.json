@@ -6,20 +6,26 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src && echo \"Lint complete.\"",
-    "watch": "watch \"text&cls && npm run -s lint && node ./src/app.js\" src",
+    "watch": "watch \"text&cls && tsc && node ./dist/app.js\" src",
     "start": "node ./src/app.js",
-    "pretty": "prettier ./src"
+    "pretty": "prettier ./src",
+    "server": "ts-node-dev --respawn --transpileOnly ./src/app.js",
+    "buildServer": "tsc && node ./dist/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/parser": "^2.3.3",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-prettier": "^3.1.1",
     "husky": "^3.0.5",
     "prettier": "^1.18.2",
+    "ts-node-dev": "^1.0.0-pre.43",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.6.4",
     "watch": "^1.0.2"
   },
   "husky": {
