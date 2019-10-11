@@ -1,11 +1,14 @@
 import React from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 
+import TeamView from "./views/TeamView";
+
 export default function App() {
-	console.log(darkTheme);
 	return (
 		<HashRouter>
-			<Switch></Switch>
+			<Switch>
+				<Route path="/" component={TeamView} />
+			</Switch>
 		</HashRouter>
 	);
 }
