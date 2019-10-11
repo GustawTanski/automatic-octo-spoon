@@ -20,6 +20,8 @@ router.post('/', async (req, res) => {
     });
 
     try {
+        await user.hashPassword();
+        console.log(user.password);
         const result = await user.save();
         res.send(result);
     } catch (err) {
