@@ -36,4 +36,13 @@ async function createUser(name, email, password, role) {
         password: password,
         role: role
     })
+
+    try {
+        const result = await user.save();
+        console.log(result);
+    } catch (err) {
+        console.log(err);
+    }
 };
+
+module.exports.createUser = createUser;
