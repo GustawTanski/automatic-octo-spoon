@@ -46,3 +46,4 @@ async function createUser(name, email, password, isBoss) {
 };
 
 module.exports.createUser = createUser;
+module.exports.User = User;
