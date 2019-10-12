@@ -3,4 +3,3 @@ import requestApi from "../api/index";
 
 export const postTag = ({ tagName }) => {
 	return generateAsyncAction(requestApi.post("/tags", { name: tagName }));
-};
