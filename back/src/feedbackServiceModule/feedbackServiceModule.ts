@@ -3,8 +3,6 @@ import MySqlFeedbackRepository from "./infrastructure/mySqlFeedbackRepository";
 import FeedbackService from "./core/service/feedbackService";
 import Feedback from "./core/domain/Feedback";
 import {createConnection} from "typeorm";
-import Tag from "./infrastructure/model/Tag";
-import { FeedbackEntity } from "./infrastructure/model/feedbackEntity";
 
 const feedbackServiceModule = {
     //FeedbackRepositoryImplementation: MySqlFeedbackRepository,

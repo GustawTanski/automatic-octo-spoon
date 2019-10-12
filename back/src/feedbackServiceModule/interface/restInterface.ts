@@ -1,11 +1,9 @@
 import express, { Router, Request, Response, NextFunction } from "express";
 import asyncHandler from "express-async-handler";
 import FeedbackServicePort from "../core/feedbackServicePort";
-import { getConnection } from "typeorm";
-import { FeedbackEntity } from "../infrastructure/model/feedbackEntity";
 import Feedback from "../core/domain/Feedback";
-import MySqlFeedbackRepository from "../infrastructure/mySqlFeedbackRepository";
 import NewFeedbackDto from "./model/newFeedbackDto";
+import jwt from "jsonwebtoken";
 
 export default class RestInterface{
     private _router: Router;
@@ -48,14 +46,14 @@ export default class RestInterface{
         this.router.post('/feedbacks/:targetId', asyncHandler(async (req, res, next) => {
 
             let feedbackDto: NewFeedbackDto = req.body;
-            /*let userId = this.extractUserId(req);
-            const { error } = validateAsClass(noteDto, NewNoteDto);
+            let userId = this.extractUserId(req);
+            /*const { error } = validateAsClass(noteDto, NewNoteDto);
             if(error){
                 throw new Error(error.details[0].message);
             }
             else{*/
+                feedbackDto.authorId = userId;
                 let newNote = await this._feedbackService.saveFeedback(Feedback.fromObject(feedbackDto));
-                //noteService.saveNote(this._noteMapper.newNoteDtoToNote(noteDto, userId));
 
                 res.status(200).send(newNote);
             //}
@@ -76,5 +74,24 @@ export default class RestInterface{
 
     get router(): Router {
         return this._router;
+    }
+
+    extractUserId(req: Request): string {
+        /*const jwtKey = process.env.JWT;
+        if(!jwtKey){ throw new Error("Server configuration error");}
+
+        let userId;
+        const token = req.header("x-auth-token");
+        if(token && typeof token === "string"){
+            const decoded = jwt.verify(token,jwtKey) as { _id:string };
+            userId = decoded._id;
+        }
+        if(userId) {
+            return userId;
+        }
+        else{
+            throw new Error("Invalid authentication token, can't identify user");
+        }*/
+        return "mockUserId";
     }
 }

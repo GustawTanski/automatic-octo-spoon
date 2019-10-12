@@ -2,7 +2,6 @@ import 'reflect-metadata';
 import * as jf from "joiful";
 import { mapping, map } from 'auto-mapping';
 import {Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinTable, ManyToMany, RelationId} from "typeorm";
-import Tag from '../../infrastructure/model/Tag';
 
 @Entity()
 export default class Feedback {
@@ -31,23 +30,36 @@ export default class Feedback {
     @jf.array()
     tags: string[];
 
-    /*@ManyToMany(type => Tag)
-    @JoinTable(name: "question_categories",
-    joinColumn: {
-        name: "question",
-        referencedColumnName: "id"
-    },
-    inverseJoinColumn: {
-        name: "category",
-        referencedColumnName: "id")
-    tags: Tag[];*/
+    @Column()
+    @mapping()
+    @jf.boolean().required()
+    isPrivate: boolean;
 
-	constructor($id: number|undefined, $targetId: string, $title: string, $content: string, $tags: string[]) {
+    @Column()
+    @mapping()
+    @jf.number().min(0).max(5)
+    stars?: number;
+
+    @Column()
+    @mapping()
+    @jf.number().min(0).max(2)
+    anonymityLevel?: number;
+
+    @Column()
+    @mapping()
+    @jf.string()
+    authorId?: string;
+
+	constructor($id: number|undefined, $targetId: string, $title: string, $content: string, $tags: string[], $isPrivate: boolean, $stars?: number, $anonymityLevel?: number, $authorId?: string) {
         this.id = $id;
         this.targetId = $targetId;
 		this.title = $title;
         this.content = $content;
         this.tags = $tags;
+        this.isPrivate = $isPrivate;
+        this.stars = $stars;
+        this.anonymityLevel = $anonymityLevel;
+        this.authorId = $authorId;
     }
 
     static fromObject(source: any): Feedback {

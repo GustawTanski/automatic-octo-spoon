@@ -1,8 +1,6 @@
 import FeedbackRepositoryPort from "../core/feedbackRepositoryPort";
 import { Repository, getRepository } from "typeorm";
-import { FeedbackEntity } from "./model/feedbackEntity";
 import Feedback from "../core/domain/Feedback";
-import Tag from "./model/Tag";
 
 export default class MySqlFeedbackRepository implements FeedbackRepositoryPort{
     private repository: Repository<Feedback>;
