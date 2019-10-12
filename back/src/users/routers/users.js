@@ -24,16 +24,20 @@ router.post('/', async (req, res) => {
         const result = await user.save();
         res.send(result);
     } catch (err) {
-        console.log(err);
+        res.send(err);
     }
 
 });
 
 router.get('/', async (req, res) => {
-        
     try {
+        if(req.body.team) {
+            const team = await teamModel.Team.findOne({name: req.body.team});
+            const users = await userModel.User.find({team: team._id});
+            res.send(users);
+        }
         const users = await userModel.User.find();
-        res.send(users);
+            res.send(users);
     } catch (err) {
         console.log(err);
     }
