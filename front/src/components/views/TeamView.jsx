@@ -27,11 +27,15 @@ export default function TeamView() {
 					}))}
 				/>
 			) : (
-				<Spin tip="Loading..." style={{
-					position: "fixed", 
-					top: "50vh", 
-					left:"50vw", 
-					transform: "translate(-50%,-50%)"}} />
+				<Spin
+					tip="Loading..."
+					style={{
+						position: "fixed",
+						top: "50vh",
+						left: "50vw",
+						transform: "translate(-50%,-50%)"
+					}}
+				/>
 			)}
 		</div>
 	);
