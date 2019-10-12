@@ -1,13 +1,5 @@
 import express, { Application } from "express";
 import feedbackServiceModule from "./feedbackServiceModule/feedbackServiceModule";
-
-const app = express();
-const port = process.env.PORT || 3000;
-
-startServices();
-
-const config = require('config');
-const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 
@@ -17,6 +9,8 @@ const teams = require('./users/routers/teams');
 const login = require('./users/routers/login');
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 /*
 if(!config.get('jwtPrivateKey')) {
     console.error('jwtPrivateKey is not defined');
@@ -32,6 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/users', users);
 app.use('/teams', teams);
 app.use('/login', login);
+
+startServices();
 
 async function startServices(){
     const feedbackApi = await feedbackServiceModule.init();
