@@ -7,7 +7,7 @@
 }
 
 .modal__select {
-    width: 100%;
+	width: 100%;
 }
 
 .modal .ant-select-selection {
@@ -25,12 +25,12 @@
 
 @media (max-width: 425px) {
 	.modal__radio-group > * {
-        width: 100%;
-    }
-    
-    .modal__radio-group .ant-radio-button-wrapper {
-        border-radius: 4px;
-    }
+		width: 100%;
+	}
+
+	.modal__radio-group .ant-radio-button-wrapper {
+		border-radius: 4px;
+	}
 }
 
 .modal__rating {

@@ -7,7 +7,6 @@ export default function App() {
 	return (
 		<HashRouter>
 			<Switch>
-				<Button onClick={() => showFeedbackModal()}>Show a modal</Button>
 			</Switch>
 		</HashRouter>
 	);

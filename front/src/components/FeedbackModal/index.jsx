@@ -10,9 +10,11 @@ const { Group, Button } = Radio;
 const { Item } = Form;
 
 const formRef = React.createRef();
-let closeModal;
+let closeModal, recipientIDHolder;
 
-export default function showFeedbackModal(username) {
+export default function showFeedbackModal(username, recipientID = null) {
+	recipientIDHolder = recipientID;
+
 	confirm({
 		title: `Submit a feedback ${username ? "to " + username : ""}`,
 		content: <Feedback ref={formRef} />,
@@ -32,8 +34,10 @@ const onOk = async close => {
 		});
 	});
 
+	console.log(result.title, result.tags, result.content, false, recipientIDHolder, result.rating);
+
 	store.dispatch(
-		postFeedback(result.title, result.tags, result.content, false, null, result.rating)
+		postFeedback(result.title, result.tags, result.content, false, recipientIDHolder, result.rating)
 	);
 
 	await new Promise(() => setTimeout(() => {}, 20000));
