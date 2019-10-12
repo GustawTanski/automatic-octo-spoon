@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
+import { useSelector } from "react-redux";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
 
 export default function Nav() {
-	const [current, setCurrent] = useState();
+	const history = useSelector(state => state.history);
+	const [current, setCurrent] = useState(history.location.pathname.slice(1));
+	const onClick = useCallback(e => {
+		setCurrent(e.key);
+	}, []);
 
 	return (
-		<Menu mode="horizontal">
+		<Menu
+			onClick={onClick}
+			mode="horizontal"
+			selectedKeys={[current]}
+			style={{ alignSelf: "flex-end" }}
+		>
 			<Menu.Item key="team">
 				<Link to="/team">Team</Link>
 			</Menu.Item>
