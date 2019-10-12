@@ -1,0 +1,12 @@
+.member__wrapper .ant-list-item-meta {
+	align-items: center;
+}
+
+li.member__wrapper {
+	background: #353543;
+	border-radius: 7px;
+	margin: 10px 0;
+	width: 100%;
+	padding: 5px 10px;
+	border-bottom: 1px solid #17171f !important;
+}
