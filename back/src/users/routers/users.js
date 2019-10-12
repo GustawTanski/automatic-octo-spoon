@@ -6,8 +6,6 @@ const teamModel = require('../models/teamModel');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    console.log('Hello from POST');
-    console.log(req.body);
     const email = await userModel.User.findOne({email: req.body.email});
     const team = await teamModel.Team.findOne({name: req.body.team});
     if (email) return res.status(404).send('The user with the given email already exist');
@@ -23,7 +21,6 @@ router.post('/', async (req, res) => {
 
     try {
         await user.hashPassword();
-        console.log(user.password);
         const result = await user.save();
         res.send(result);
     } catch (err) {
@@ -33,10 +30,9 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-    console.log('Hello from GET');
-    
+        
     try {
-        const users = await model.User.find();
+        const users = await userModel.User.find();
         res.send(users);
     } catch (err) {
         console.log(err);
