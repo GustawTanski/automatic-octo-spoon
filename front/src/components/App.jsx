@@ -1,13 +1,10 @@
 import React from "react";
-import { HashRouter, Switch } from "react-router-dom";
-import { connect } from "react-redux";
-import { Route } from "react";
-import { Button } from "antd";
-import showFeedbackModal from "./FeedbackModal";
+import { Switch, Route } from "react-router-dom";
+import HashRouter from "./ReduxedHashRouter";
 
 import TeamView from "./views/TeamView";
 
-function App() {
+export default function App() {
 	return (
 		<HashRouter>
 			<Switch>
@@ -16,11 +13,5 @@ function App() {
 		</HashRouter>
 	);
 }
-
-const mapStateToProps = state => {
-	return {
-		isPending: state.feedbackPostReducer.isPending
-	};
-};
 
 export default connect(mapStateToProps)(App);

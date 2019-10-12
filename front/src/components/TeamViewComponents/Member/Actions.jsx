@@ -4,16 +4,26 @@ import showFeedbackModal from "../../FeedbackModal/index";
 
 import "./Actions.css";
 
-export default function Actions({ color: { bg = "", font = "" } = {} }) {
-	const onKeyDown = useCallback(event => {
-		if (event.keyCode == 13) {
-			showFeedbackModal();
-		}
-	}, []);
+export default function Actions({ color: { bg = "", font = "" } = {}, name = "", id = "" }) {
+	const onKeyDown = useCallback(
+		event => {
+			if (event.keyCode == 13) {
+				showFeedbackModal(name, id);
+			}
+		},
+		[name, id]
+	);
 	const [width, setWidth] = useState(window.innerWidth);
 	const windowResize = useCallback(event => {
 		setWidth(window.innerWidth);
 	});
+
+	const onPointerDown = useCallback(
+		event => {
+			showFeedbackModal(name, id);
+		},
+		[name, id]
+	);
 	useEffect(() => {
 		window.addEventListener("resize", windowResize);
 		return () => {
@@ -23,12 +33,12 @@ export default function Actions({ color: { bg = "", font = "" } = {} }) {
 	return (
 		<div className="member__actions">
 			{width <= 425 ? (
-				<Icon tabIndex={0} type="down" onPointerDown={showFeedbackModal} onKeyDown={onKeyDown} />
+				<Icon tabIndex={0} type="down" onPointerDown={onPointerDown} onKeyDown={onKeyDown} />
 			) : (
 				<Button
 					tabIndex={0}
 					type="primary"
-					onPointerDown={showFeedbackModal}
+					onPointerDown={onPointerDown}
 					onKeyDown={onKeyDown}
 					size="small"
 					style={{

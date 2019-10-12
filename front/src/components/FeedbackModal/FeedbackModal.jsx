@@ -6,9 +6,6 @@ import { postFeedback } from "../../redux/actions/feedback";
 import "./style.css";
 
 class FeedbackModal extends React.Component {
-	onClick() {
-		this.props.addFeedback("title");
-	}
 	render() {
 		return (
 			<div className="modal">
@@ -24,7 +21,6 @@ class FeedbackModal extends React.Component {
 					<Radio.Button value="public">Public</Radio.Button>
 				</Radio.Group>
 				<Rate className="modal__rating" allowHalf />
-				<Button onClick={this.onClick.bind(this)}>run</Button>
 			</div>
 		);
 	}
