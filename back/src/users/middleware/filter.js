@@ -1,8 +1,8 @@
-function filter (req, res, next) {
-    const team = req.header('team');
-    req.team = team;
+function filter(req, res, next) {
+	const team = req.header("team");
+	req.team = team;
 
-    next();
-};
+	next();
+}
 
 module.exports = filter;

@@ -2,6 +2,8 @@ import React, { useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
+import "./Nav.css";
 
 export default function Nav() {
 	const history = useSelector(state => state.history);
@@ -11,18 +13,19 @@ export default function Nav() {
 	}, []);
 
 	return (
-		<Menu
-			onClick={onClick}
-			mode="horizontal"
-			selectedKeys={[current]}
-			style={{ alignSelf: "flex-end" }}
-		>
-			<Menu.Item key="team">
-				<Link to="/team">Team</Link>
-			</Menu.Item>
-			<Menu.Item key="feed">
-				<Link to="/feed">Feedback</Link>
-			</Menu.Item>
-		</Menu>
+		<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+			<Logo />
+			<Menu onClick={onClick} mode="horizontal" selectedKeys={[current]} className="nav__nav">
+				<Menu.Item key="team">
+					<Link to="/team">Team</Link>
+				</Menu.Item>
+				<Menu.Item key="feed">
+					<Link to="/feed">Feedback</Link>
+				</Menu.Item>
+				<Menu.Item key="wall">
+					<Link to="/wall">Wall</Link>
+				</Menu.Item>
+			</Menu>
+		</div>
 	);
 }

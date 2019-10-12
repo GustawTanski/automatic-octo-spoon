@@ -6,7 +6,6 @@ import MemberList from "../TeamViewComponents/MemberList";
 import Nav from "../Nav";
 import { getUsersTeam } from "../../redux/actions/users";
 import "./TeamView.css";
-import { Z_FIXED } from "zlib";
 
 export default function TeamView() {
 	const dispatch = useDispatch();
