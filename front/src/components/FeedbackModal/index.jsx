@@ -7,10 +7,12 @@ const { confirm } = Modal;
 const { Group, Button } = Radio;
 const { Item } = Form;
 
+const formRef = React.createRef();
+
 export default function showFeedbackModal(username) {
 	confirm({
 		title: `Submit a feedback ${username ? "to " + username : ""}`,
-		content: <FormFeedback />,
+		content: <FormFeedback ref={formRef} />,
 		okText: "Submit",
 		centered: true,
 		icon: null,
@@ -18,8 +20,15 @@ export default function showFeedbackModal(username) {
 	});
 }
 
-function onOk() {
+function onOk(close) {
 	// TODO:: Implement
+	formRef.current.validateFields((err, values) => {
+		if (!err) {
+			console.log(values);
+		}
+	});
+
+	close();
 }
 
 class FeedbackModal extends React.Component {
@@ -32,15 +41,6 @@ class FeedbackModal extends React.Component {
 		});
 	};
 
-	check = event => {
-		event.preventDefault();
-		this.props.form.validateFields((err, values) => {
-			if (!err) {
-				console.log("Received values of form: ", values);
-			}
-		});
-	};
-
 	render() {
 		const { getFieldDecorator } = this.props.form;
 
@@ -50,8 +50,8 @@ class FeedbackModal extends React.Component {
 					{getFieldDecorator("title", {
 						rules: [
 							{
-                                required: true,
-                                max: 64,
+								required: true,
+								max: 64,
 								message: "The title is required"
 							}
 						]
@@ -75,8 +75,8 @@ class FeedbackModal extends React.Component {
 						{getFieldDecorator("content", {
 							rules: [
 								{
-                                    required: true,
-                                    max: 2048,
+									required: true,
+									max: 2048,
 									message: "Feedback's message is required"
 								}
 							]
@@ -84,8 +84,8 @@ class FeedbackModal extends React.Component {
 					</Item>
 				)}
 				<Item>
-					{getFieldDecorator("privacy", {initialValue: "anonymous"})(
-                        <Group
+					{getFieldDecorator("privacy", { initialValue: "anonymous" })(
+						<Group
 							// defaultValue="anonymous"
 							buttonStyle="solid"
 							className="modal__radio-group"
@@ -98,12 +98,9 @@ class FeedbackModal extends React.Component {
 					)}
 				</Item>
 				<Item>{getFieldDecorator("rate")(<Rate className="modal__rating" allowHalf />)}</Item>
-				<Item>
-					<Button onClick={e => this.check(e)}>Dupa</Button>
-				</Item>
 			</Form>
 		);
 	}
 }
 
-const FormFeedback = Form.create({})(FeedbackModal);
+const FormFeedback = Form.create()(FeedbackModal);
