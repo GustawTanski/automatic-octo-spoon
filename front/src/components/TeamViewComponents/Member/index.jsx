@@ -9,6 +9,7 @@ import "./index.css";
 
 export default function Member({ name, position, chef, id }) {
 	const color = useColor(name);
+	console.log(id);
 	return (
 		<List.Item
 			className="member__wrapper"

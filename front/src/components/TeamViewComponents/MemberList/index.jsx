@@ -7,8 +7,8 @@ export default function MemberList({ members }) {
 	return (
 		<div className="member-list">
 			<List>
-				{members.map(({ name, position, chef }) => (
-					<Member key={name} name={name} position={position} chef={chef} />
+				{members.map(({ name, position, chef, id }) => (
+					<Member key={name} name={name} position={position} chef={chef} id={id} />
 				))}
 			</List>
 		</div>

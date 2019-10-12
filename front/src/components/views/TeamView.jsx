@@ -19,7 +19,8 @@ export default function TeamView() {
 				members={users.map(user => ({
 					position: user.email,
 					name: user.name,
-					chef: user.isBoss
+					chef: user.isBoss,
+					id: user["_id"]
 				}))}
 			/>
 		</div>
