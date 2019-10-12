@@ -1,0 +1,7 @@
+.cardsWrapper{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 15px;
+    background-color: #ECECEC;
+}
