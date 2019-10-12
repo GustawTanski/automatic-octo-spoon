@@ -23,8 +23,7 @@ export function feedbackPostReducer(state = initialState, action) {
 			return {
 				...state,
 				isPending: false,
-				error: action.payload.error,
-				statusCode: action.payload.status
+				error: action.payload
 			};
 		default:
 			return state;

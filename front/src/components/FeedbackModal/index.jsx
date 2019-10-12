@@ -36,14 +36,13 @@ const onOk = async close => {
 		postFeedback(result.title, result.tags, result.content, false, null, result.rating)
 	);
 
-	throw "This has to be thrown or modal will get closed too early :D";
+	await new Promise(() => setTimeout(() => {}, 20000));
 };
 
 store.subscribe(() => handlePending(closeModal));
 
 const handlePending = close => {
 	const { isPending } = store.getState().feedbackPostReducer;
-	console.log("handling" + isPending);
 
 	if (!isPending) close();
 };
