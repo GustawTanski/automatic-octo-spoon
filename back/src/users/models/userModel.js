@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
+    team: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Team'
+    },
     date: {
         type: Date,
         default: Date.now
@@ -35,5 +39,4 @@ userSchema.method('hashPassword', async function () {
 
 const User = mongoose.model('User', userSchema);
 
-module.exports.createUser = createUser;
 module.exports.User = User;

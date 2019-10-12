@@ -3,8 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const connectdb = require('./users/connectDB');
-const model = require('./users/userModel.js');
 const users = require('./users/routers/users');
+const teams = require('./users/routers/teams');
 const login = require('./users/routers/login');
 
 const app = express();
@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/users', users);
+app.use('/teams', teams);
 app.use('/login', login);
 
 

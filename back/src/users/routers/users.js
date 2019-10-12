@@ -1,22 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const model = require('../userModel.js');
+const userModel = require('../models/userModel');
+const teamModel = require('../models/teamModel');
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
     console.log('Hello from POST');
     console.log(req.body);
-    const email = await model.User.findOne({email: req.body.email});
+    const email = await userModel.User.findOne({email: req.body.email});
+    const team = await teamModel.Team.findOne({name: req.body.team});
     if (email) return res.status(404).send('The user with the given email already exist');
-
-    //await model.createUser(req.body.name, req.body.email, req.body.password, req.body.isBoss);
+    if(!team) return res.status(400).send('Provided team does not exist.');
 
     const user = new model.User({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        isBoss: req.body.isBoss
+        isBoss: req.body.isBoss,
+        team: team._id
     });
 
     try {
