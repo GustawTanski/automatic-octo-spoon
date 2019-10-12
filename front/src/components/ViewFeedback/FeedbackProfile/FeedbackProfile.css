@@ -1,0 +1,45 @@
+.profile__wrapper .ant-avatar {
+	font-size: 30px;
+}
+
+.profile__wrapper__flex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	height: fit-content;
+}
+
+@media (min-width: 425px) {
+	.profile__wrapper__avatar {
+		text-align: center;
+		width: 30%;
+	}
+
+	.profile__wrapper__info {
+		width: 70%;
+		display: flex;
+		justify-content: flex-start;
+	}
+}
+
+@media (max-width: 425px) {
+	.profile__wrapper__avatar {
+		width: 100%;
+		margin-bottom: 15px;
+	}
+
+	.profile__wrapper__info {
+		width: 100%;
+		margin-bottom: 15px;
+
+		display: flex;
+		justify-content: flex-start;
+	}
+}
+
+.modal__rating {
+	color: #1890ff;
+}
+.modal__rating .anticon {
+	color: unset;
+}

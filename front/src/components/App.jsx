@@ -1,12 +1,13 @@
 import React from "react";
 import { HashRouter, Switch } from "react-router-dom";
 import { connect } from "react-redux";
+import { Route } from "react";
 import { Button } from "antd";
 import showFeedbackModal from "./FeedbackModal";
 
 import TeamView from "./views/TeamView";
 
-export default function App() {
+function App() {
 	return (
 		<HashRouter>
 			<Switch>
@@ -15,11 +16,6 @@ export default function App() {
 		</HashRouter>
 	);
 }
-const map = state => {
-	console.log(state);
-	return state;
-};
-export default connect(map)(App);
 
 const mapStateToProps = state => {
 	return {
@@ -27,7 +23,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(App);
+export default connect(mapStateToProps)(App);
