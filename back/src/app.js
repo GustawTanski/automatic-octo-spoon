@@ -1,3 +1,11 @@
+import express, { Application } from "express";
+import feedbackServiceModule from "./feedbackServiceModule/feedbackServiceModule";
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+startServices();
+
 const config = require('config');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -25,6 +33,12 @@ app.use('/users', users);
 app.use('/teams', teams);
 app.use('/login', login);
 
-
-const port = process.env.PORT || 3000;
-app.listen(port);
+async function startServices(){
+    const feedbackApi = await feedbackServiceModule.init();
+    app.use("/", feedbackApi.router);
+    console.log("...");
+    
+    app.listen(port, () => {
+        console.log(`Listening on port ${port}...`);
+    });
+}
