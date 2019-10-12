@@ -13,9 +13,9 @@ const { Item } = Form;
 const formRef = React.createRef();
 let closeModal, recipientIDHolder;
 
-export default function showFeedbackModal(username, recipientID = null) {
+export default function showFeedbackModal(username, recipientID = "") {
 	recipientIDHolder = recipientID;
-
+	// debugger;
 	confirm({
 		title: `Submit a feedback ${username ? "to " + username : ""}`,
 		content: <Feedback ref={formRef} />,
@@ -45,8 +45,8 @@ const onOk = async close => {
 store.subscribe(() => handlePending(closeModal));
 
 const handlePending = close => {
+	if (!close) return;
 	const { isPending } = store.getState().feedbackPostReducer;
-
 	if (!isPending) close();
 };
 

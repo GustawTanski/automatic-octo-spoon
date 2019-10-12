@@ -38,7 +38,7 @@ export default function Actions({ color: { bg = "", font = "" } = {}, name = "",
 				<Button
 					tabIndex={0}
 					type="primary"
-					onPointerDown={showFeedbackModal}
+					onPointerDown={onPointerDown}
 					onKeyDown={onKeyDown}
 					size="small"
 					style={{
