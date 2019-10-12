@@ -4,3 +4,8 @@
 .modal__rating .anticon {
 	color: unset;
 }
+
+.authorWrapper__item{
+	display: inline-block;
+	margin: 0 0 40px 8px;
+}

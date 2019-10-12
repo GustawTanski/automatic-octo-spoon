@@ -24,26 +24,27 @@ class FeedbackMain extends React.Component {
                 tags: ["kon", "tag2", "tag3"]
             },
             {
-                title: "FEEDBACK ONE",
+                title: "FEEDBACK TWO",
                 content: "Content 2 lorem ipsum blablablablablablabla",
                 rate: 2,
                 tags: ["pies", "tag2", "tag3"]
             },
             {
-                title: "FEEDBACK ONE",
+                title: "FEEDBACK TRZY",
                 content: "Content 3 lorem ipsum blablablablablablabla",
                 rate: 3,
                 tags: ["kot", "tag2", "tag3"]
             },
             {
-                title: "FEEDBACK ONE",
+                title: "FEEDBACK FYNF",
                 content: "Content 4 lorem ipsum blablablablablablabla",
                 rate: 0.5,
                 tags: ["jaszczurka", "tag2", "tag3"]
             },
             {
-                title: "FEEDBACK ONE",
-                content: "Content 5 lorem ipsum blablablablablablabla",
+                title: "FEEDBACK SYKS",
+                content: "Content 5 lorem ipsum blablabl ab labla5 lorem ipsum blabla blablabla5 lorem ipsum blablabl ablabla5 lorem ipsum blabl abla blabla5 lorem ipsum blablab lablabla5 lorem ipsum blablablab labla5 lorem ipsum blabl ablablabla5 lorem ipsum blablab lablabla5 lorem ipsum blablab lablabla5 lorem ipsum blablabl ablabla5 lorem ipsum blabla blablab lablabla",
+                author: "DAMIAN",
                 rate: 1.5,
                 tags: ["react", "tag2", "tag3"]
             }
@@ -64,14 +65,10 @@ class FeedbackMain extends React.Component {
         });
     };
     renderListOfFeedback = () => {
-        return <div className="cardsWrapper">
-            {this.renderCards()}
-        </div>;
+        return <div className="cardsWrapper">{this.renderCards()}</div>;
     };
     render() {
-        return <div>
-            {this.renderListOfFeedback()}
-        </div>;
+        return <div>{this.renderListOfFeedback()}</div>;
     }
 }
 export default FeedbackMain;

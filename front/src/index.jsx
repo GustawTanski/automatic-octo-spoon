@@ -11,8 +11,8 @@ import store from "./redux";
 const root = document.querySelector("#root");
 
 render(
-    <Provider store={store}>
-        <Feed />
-    </Provider>,
-    root
+	<Provider store={store}>
+		<Feed />
+	</Provider>,
+	root
 );

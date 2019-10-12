@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Rate, Tag } from "antd";
+import { Modal, Button, Rate, Tag, Avatar } from "antd";
 import "./FeedbackInfo.css";
 
 class FeedbackInfo extends React.Component {
@@ -16,15 +16,16 @@ class FeedbackInfo extends React.Component {
 	};
 
 	connectTags = (title, tags) => {
-		const connectedTags = tags.map(tag => <Tag>{tag}</Tag>
-		)
-		return <React.Fragment>
-			<h3>{title}</h3>
-			<div>{connectedTags}</div>
-		</React.Fragment>
-	}
+		const connectedTags = tags.map((tag, i) => <Tag key={i}>{tag}</Tag>);
+		return (
+			<React.Fragment>
+				<h3>{title}</h3>
+				<div>{connectedTags}</div>
+			</React.Fragment>
+		);
+	};
 	render() {
-		const { title, content, rate, tags } = this.props.item;
+		const { title, content, rate, tags, author } = this.props.item;
 		const { visible } = this.state;
 		const fullTitle = this.connectTags(title, tags);
 		return (
@@ -40,7 +41,14 @@ class FeedbackInfo extends React.Component {
 						<Button key="back" onClick={this.handleCancel}>
 							Return
 						</Button>
-					]}>
+					]}
+				>
+					{author &&
+						<div>
+							<Avatar icon="user" />
+							<span className="authorWrapper__item">{author}</span>
+						</div>
+					}
 					<p>{content}</p>
 					<Rate className="modal__rating" allowHalf defaultValue={rate} disabled />
 				</Modal>
