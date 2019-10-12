@@ -5,6 +5,7 @@ import { getConnection } from "typeorm";
 import { FeedbackEntity } from "../infrastructure/model/feedbackEntity";
 import Feedback from "../core/domain/Feedback";
 import MySqlFeedbackRepository from "../infrastructure/mySqlFeedbackRepository";
+import NewFeedbackDto from "./model/newFeedbackDto";
 
 export default class RestInterface{
     private _router: Router;
@@ -42,6 +43,22 @@ export default class RestInterface{
             let serviceResponse = await this._feedbackService.getFeedbackTagsForUSer(req.params.targetId);
 
             res.status(200).send(serviceResponse);
+        }));
+
+        this.router.post('/feedbacks/:targetId', asyncHandler(async (req, res, next) => {
+
+            let feedbackDto: NewFeedbackDto = req.body;
+            /*let userId = this.extractUserId(req);
+            const { error } = validateAsClass(noteDto, NewNoteDto);
+            if(error){
+                throw new Error(error.details[0].message);
+            }
+            else{*/
+                let newNote = await this._feedbackService.saveFeedback(Feedback.fromObject(feedbackDto));
+                //noteService.saveNote(this._noteMapper.newNoteDtoToNote(noteDto, userId));
+
+                res.status(200).send(newNote);
+            //}
         }));
 
         /**

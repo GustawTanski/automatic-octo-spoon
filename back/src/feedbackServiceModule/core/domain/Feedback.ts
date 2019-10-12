@@ -27,6 +27,8 @@ export default class Feedback {
     content: string;
 
     @Column("simple-array")
+    @mapping()
+    @jf.array()
     tags: string[];
 
     /*@ManyToMany(type => Tag)
@@ -52,7 +54,8 @@ export default class Feedback {
         let feedback = map(source, Feedback);
         const { error } = jf.validateAsClass(feedback, Feedback);
         if (feedback == null || error){
-            throw new TypeError("Failed mapping");
+            if(error){throw new TypeError(error.message)};
+            throw new TypeError("Mapping error");
         }
         else return feedback;
     }
