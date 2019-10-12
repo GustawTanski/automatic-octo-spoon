@@ -1,9 +1,10 @@
 import React from "react";
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import { Button } from "antd";
-import showFeedbackModal from "./FeedbackModal/";
+import showFeedbackModal from "./FeedbackModal";
 
-export default function App() {
+function App() {
 	return (
 		<HashRouter>
 			<Switch>
@@ -12,22 +13,8 @@ export default function App() {
 		</HashRouter>
 	);
 }
-
-const mapDispatchToProps = dispatch => {
-	return {
-		onPost: (title, body) => {
-			dispatch(postFeedback(title, body));
-		}
-	};
+const map = state => {
+	console.log(state);
+	return state;
 };
-
-const mapStateToProps = state => {
-	return {
-		isPending: state.feedbackReducer.isPending
-	};
-};
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(App);
+export default connect(map)(App);
