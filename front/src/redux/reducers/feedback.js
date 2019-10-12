@@ -11,7 +11,8 @@ export function feedbackPostReducer(state = initialState, action) {
 		case POST_FEEDBACK.STARTED:
 			return {
 				...state,
-				isPending: true
+				isPending: true,
+				statusCode: 0
 			};
 		case POST_FEEDBACK.SUCCESS:
 			return {
@@ -20,11 +21,10 @@ export function feedbackPostReducer(state = initialState, action) {
 				statusCode: 200
 			};
 		case POST_FEEDBACK.FAILURE:
+			console.log("PAYLOAD", action);
 			return {
 				...state,
-				isPending: false,
-				error: action.payload,
-				statusCode: action.payload
+				isPending: false
 			};
 		default:
 			return state;

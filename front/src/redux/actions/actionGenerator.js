@@ -1,4 +1,6 @@
 export const POST_FEEDBACK = generateTypes("POST_FEEDBACK");
+export const GET_FEEDBACK = generateTypes("GET_FEEDBACK");
+
 export const POST_TAG = generateTypes("POST_TAG");
 export const GET_USER_TEAMMATE = generateTypes("GET_USER_TEAMMATE");
 export const GET_ALL_TAGS = generateTypes("GET_ALL_TAGS");
