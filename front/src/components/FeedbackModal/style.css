@@ -6,6 +6,10 @@
 	margin: 10px 0;
 }
 
+.modal__select {
+    width: 100%;
+}
+
 .modal .ant-select-selection {
 	background-color: #3b3b4d;
 	border: 1px solid #17171f;
@@ -16,7 +20,13 @@
 }
 
 .modal__radio-group > * {
-	width: 50%;
+	width: 33.3333%;
+}
+
+@media (max-width: 425px) {
+	.modal__radio-group > * {
+		width: 100%;
+	}
 }
 
 .modal__rating {
