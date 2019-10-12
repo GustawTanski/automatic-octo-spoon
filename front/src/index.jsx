@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import "./global.css";
+import Feedbacks from "./components/ViewFeedback/FeedbackContainer";
 
 import App from "./components/App";
 import Feed from "./components/ViewFeedback/FeedbackProfile/FeedbackProfile";
@@ -47,7 +48,7 @@ const displayFeedback = [
 
 render(
 	<Provider store={store}>
-		<Feed displayFeedback={displayFeedback} />
+		<Feedbacks />
 	</Provider>,
 	root
 );

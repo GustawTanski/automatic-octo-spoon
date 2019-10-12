@@ -29,9 +29,7 @@ class FeedbackInfo extends React.Component {
 		const fullTitle = this.connectTags(title, tags);
 		return (
 			<div>
-				<Button type="primary" onClick={this.showModal}>
-					Show more
-				</Button>
+				<Button onClick={this.showModal}>Show more</Button>
 				<Modal
 					visible={visible}
 					title={fullTitle}

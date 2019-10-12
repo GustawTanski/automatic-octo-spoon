@@ -5,12 +5,13 @@ import { history } from "./history";
 import { routerContext } from "./routerContext";
 import { users } from "./users";
 import { team } from "./team";
-
+import { currentUser } from "./setUser";
 export default combineReducers({
 	feedbackPostReducer,
 	tagReducer,
 	history,
 	routerContext,
 	users,
-	team
+	team,
+	currentUser
 });
