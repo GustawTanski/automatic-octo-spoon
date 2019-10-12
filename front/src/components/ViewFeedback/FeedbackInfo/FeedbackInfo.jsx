@@ -2,7 +2,6 @@ import React from "react";
 import { Modal, Button, Rate, Tag, Avatar } from "antd";
 import "./FeedbackInfo.css";
 
-
 class FeedbackInfo extends React.Component {
 	state = {
 		visible: false
