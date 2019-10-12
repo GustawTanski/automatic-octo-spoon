@@ -2,12 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const userModel = require('../models/userModel');
 const teamModel = require('../models/teamModel');
+const filter = require('../middleware/filter');
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
     const email = await userModel.User.findOne({email: req.body.email});
     const team = await teamModel.Team.findOne({name: req.body.team});
+
     if (email) return res.status(404).send('The user with the given email already exist');
     if(!team) return res.status(400).send('Provided team does not exist.');
 
@@ -16,7 +18,8 @@ router.post('/', async (req, res) => {
         email: req.body.email,
         password: req.body.password,
         isBoss: req.body.isBoss,
-        team: team._id
+        team: team._id,
+        position: req.body.position
     });
 
     try {
@@ -29,10 +32,11 @@ router.post('/', async (req, res) => {
 
 });
 
-router.get('/', async (req, res) => {
+router.get('/', filter, async (req, res) => {
+    console.log(req.team);
     try {
-        if(req.body.team) {
-            const team = await teamModel.Team.findOne({name: req.body.team});
+        if(req.team) {
+            const team = await teamModel.Team.findOne({name: req.team});
             const users = await userModel.User.find({team: team._id});
             res.send(users);
         }
