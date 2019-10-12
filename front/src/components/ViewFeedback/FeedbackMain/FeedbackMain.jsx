@@ -17,18 +17,18 @@ class FeedbackMain extends React.Component {
 			maxHeight: "150px",
 			margin: "5px"
 		}
-	}
+	};
 	componentDidMount() {
 		if (window.innerWidth < 400) {
 			this.setState({
 				configStyle: {
-					width: '285px',
+					width: "285px",
 					maxHeight: "150px",
 					margin: "10px"
 				}
 			});
-		};
-	};
+		}
+	}
 	renderCards = () => {
 		// const listOfCards = this.props.feedbacks.map(feedback => {
 		//     const description = feedback.content.substring(0, 30);

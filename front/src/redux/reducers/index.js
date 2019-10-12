@@ -3,5 +3,5 @@ import { feedbackPostReducer } from "./feedback";
 import { tagReducer } from "./tags";
 export default combineReducers({
 	feedbackPostReducer,
-	tagReducer,
+	tagReducer
 });
