@@ -21,9 +21,7 @@ router.post('/', async (req, res) => {
 
 });
 
-router.get('/', async (req, res) => {
-    console.log('Hello from team GET');
-    
+router.get('/', async (req, res) => {    
     try {
         const teams = await teamModel.Team.find();
         res.send(teams);
