@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Modal, Button, Rate } from "antd";
+import { Modal, Button, Rate, Tag } from "antd";
 import "./FeedbackInfo.css";
 
 class FeedbackInfo extends React.Component {
@@ -8,7 +7,6 @@ class FeedbackInfo extends React.Component {
 		visible: false
 	};
 	showModal = () => {
-		this.props.onclick();
 		this.setState({
 			visible: true
 		});
@@ -17,8 +15,18 @@ class FeedbackInfo extends React.Component {
 		this.setState({ visible: false });
 	};
 
+	connectTags = (title, tags) => {
+		const connectedTags = tags.map(tag => <Tag>{tag}</Tag>
+		)
+		return <React.Fragment>
+			<h3>{title}</h3>
+			<div>{connectedTags}</div>
+		</React.Fragment>
+	}
 	render() {
+		const { title, content, rate, tags } = this.props.item;
 		const { visible } = this.state;
+		const fullTitle = this.connectTags(title, tags);
 		return (
 			<div>
 				<Button type="primary" onClick={this.showModal}>
@@ -26,15 +34,15 @@ class FeedbackInfo extends React.Component {
 				</Button>
 				<Modal
 					visible={visible}
-					title="Title"
+					title={fullTitle}
 					onCancel={this.handleCancel}
 					footer={[
 						<Button key="back" onClick={this.handleCancel}>
 							Return
 						</Button>
-					]}
-				>
-					<Rate className="modal__rating" allowHalf defaultValue={2.5} disabled />
+					]}>
+					<p>{content}</p>
+					<Rate className="modal__rating" allowHalf defaultValue={rate} disabled />
 				</Modal>
 			</div>
 		);
