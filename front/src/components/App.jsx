@@ -18,3 +18,14 @@ const map = state => {
 	return state;
 };
 export default connect(map)(App);
+
+const mapStateToProps = state => {
+	return {
+		isPending: state.feedbackPostReducer.isPending
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(App);
