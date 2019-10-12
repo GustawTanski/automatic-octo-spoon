@@ -4,9 +4,7 @@
 	margin-top: 10px;
 }
 
-
-@media only screen and (min-width:) {
-    .logo__logo {
-        
-    }
+@media only screen and (min-width: ) {
+	.logo__logo {
+	}
 }
