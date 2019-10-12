@@ -31,19 +31,21 @@ class FeedbackMain extends React.Component {
 		}
 	}
 	renderCards = () => {
-		const listOfCards = this.props.feedbacks.map(feedback => {
+		const listOfCards = this.props.feedbacks.map((feedback, index) => {
 			const description = feedback.content.substring(0, 30);
 			const background = switchColors(feedback.rate, bgColors);
 
-			<Card
-				style={{ ...this.state.configStyle, backgroundColor: background }}
-				key={index}
-				title={feedback.title}
-				bordered={false}
-				extra={<FeedbackInfo item={feedback} />}
-			>
-				{description}...
-			</Card>;
+			return (
+				<Card
+					style={{ ...this.state.configStyle, backgroundColor: background }}
+					key={index}
+					title={feedback.title}
+					bordered={false}
+					extra={<FeedbackInfo item={feedback} />}
+				>
+					{description}...
+				</Card>
+			);
 		});
 		return listOfCards;
 	};

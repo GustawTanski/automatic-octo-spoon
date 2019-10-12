@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Layout, Menu, Icon, Select } from "antd";
 import Router from "react-router";
-import { getUsers } from "../../redux/actions/getUsers";
+import { fetchPosts } from "../../redux/actions/getUsers";
 const { Sider } = Layout;
 
 const { SubMenu } = Menu;
@@ -114,5 +114,5 @@ const mapStateToProps = state => {
 };
 export default connect(
 	mapStateToProps,
-	{ getUsers }
+	{ fetchPosts }
 )(FeedbackSider);
