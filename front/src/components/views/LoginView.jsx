@@ -1,21 +1,24 @@
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 import { connect } from "react-redux";
 import React from "react";
-import requestApi from "../../redux/api/index.js"
+import requestApi from "../../redux/api/index.js";
+import { setToken } from "../../redux/actions/setToken";
 
 class LoginView extends React.Component {
 	handleSubmit = async e => {
 		e.preventDefault();
 
 		this.props.form.validateFields(async (err, values) => {
-            if (!err) {
-                const token = await requestApi.post("/login", {
-                    body: {
-                        email: values.email,
-                        password: values.password,
-                        team: values.team
-                    }
-                })
+			if (!err) {
+				const token = await requestApi.post("/login", {
+					body: {
+						email: values.email,
+						password: values.password,
+						team: values.team
+					}
+				});
+
+				this.props.setToken(token);
 			}
 		});
 	};
@@ -51,4 +54,7 @@ class LoginView extends React.Component {
 }
 
 const Temp = Form.create()(LoginView);
-export default connect()(Temp);
+export default connect(
+	null,
+	setToken
+)(Temp);

@@ -1,4 +1,4 @@
-import SET_TOKEN from "../actions/setToken";
+import { SET_TOKEN } from "../actions/setToken";
 
 export function token(state = "", action) {
 	switch (action.type) {

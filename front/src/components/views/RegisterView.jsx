@@ -26,10 +26,17 @@ class RegisterView extends React.Component {
 						rules: [{ required: true, message: "Please input your password!" }]
 					})(<Input type="password" placeholder="Password" />)}
 				</Form.Item>
-                <Form.Item>
-                    {getFieldDecorator("isBoss")(<Switch onChange={(e) => this.setState({})} defaultChecked="false" unCheckedChildren="I'm not the team leader" checkedChildren="I'm the team leader" />)}
-                </Form.Item>
-                {}
+				<Form.Item>
+					{getFieldDecorator("isBoss")(
+						<Switch
+							onChange={e => this.setState({})}
+							defaultChecked="false"
+							unCheckedChildren="I'm not the team leader"
+							checkedChildren="I'm the team leader"
+						/>
+					)}
+				</Form.Item>
+				{}
 				<Form.Item>
 					<Button type="primary">Log in</Button>
 					<a href="/#/register">Or register if you don't yet have an account</a>
