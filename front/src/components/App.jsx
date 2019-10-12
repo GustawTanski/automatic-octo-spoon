@@ -1,7 +1,6 @@
 import React from "react";
-import { HashRouter, Switch } from "react-router-dom";
-import { Button } from "antd";
-import showFeedbackModal from "./FeedbackModal";
+import { Switch, Route } from "react-router-dom";
+import HashRouter from "./ReduxedHashRouter";
 
 import TeamView from "./views/TeamView";
 
@@ -14,3 +13,4 @@ export default function App() {
 		</HashRouter>
 	);
 }
+

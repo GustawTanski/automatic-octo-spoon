@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import MemberList from "../TeamViewComponents/MemberList";
+import Nav from "../Nav";
+import { getUsersTeam } from "../../redux/actions/users";
 import "./TeamView.css";
 
 export default function TeamView() {
+	const dispatch = useDispatch();
+	const users = useSelector(state => state.users);
+	useEffect(() => {
+		dispatch(getUsersTeam());
+	}, ["const"]);
 	return (
 		<div className="team-view__wrapper">
+			<Nav />
 			<MemberList
-				members={[
-					{ position: "Internal Tactics Planner", name: "Jacobs", chef: true },
-					{ position: "Forward Implementation Supervisor", name: "Damian" },
-					{ position: "Future Tactics Engineer", name: "Breanne" },
-					{ position: "Product Division Administrator", name: "Alexandria Smitham" }
-				]}
+				members={users.map(user => ({
+					position: user.email,
+					name: user.name,
+					chef: user.isBoss,
+					id: user["_id"]
+				}))}
 			/>
 		</div>
 	);
