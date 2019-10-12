@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import "./global.css";
 import Sider from "./components/ViewFeedback/FeedbackSider";
 
-<<<<<<< HEAD
 import App from "./components/App";
 import Feed from "./components/ViewFeedback/FeedbackMain/FeedbackMain";
 
@@ -18,10 +17,3 @@ render(
 	</Provider>,
 	root
 );
-=======
-// import App from "./components/App";
-
-const root = document.querySelector("#root");
-
-render(<Sider />, root);
->>>>>>> front/feat/FeedbackSider
