@@ -7,10 +7,10 @@ import Actions from "./Actions";
 import useColor from "../../../hooks/useColor.js";
 import "./index.css";
 
-export default function Member({ name, position, chef }) {
+export default function Member({ name, position, chef, id }) {
 	const color = useColor(name);
 	return (
-		<List.Item className="member__wrapper" actions={[<Actions color={color} />]}>
+		<List.Item className="member__wrapper" actions={[<Actions color={color} id={id} name={name} />]}>
 			<List.Item.Meta
 				avatar={<Avatar name={name} color={color} />}
 				title={<Title name={name} position={position} chef={chef} color={color} />}

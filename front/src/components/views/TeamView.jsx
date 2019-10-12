@@ -8,10 +8,10 @@ import "./TeamView.css";
 
 export default function TeamView() {
 	const dispatch = useDispatch();
+	const users = useSelector(state => state.users);
 	useEffect(() => {
 		dispatch(getUsersTeam());
-	});
-	const users = useSelector(state => state.users);
+	}, ["const"]);
 	return (
 		<div className="team-view__wrapper">
 			<Nav />
