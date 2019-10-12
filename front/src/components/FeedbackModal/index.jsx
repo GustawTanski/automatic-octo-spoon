@@ -52,7 +52,7 @@ const handlePending = close => {
 
 class FeedbackModal extends React.Component {
 	state = { selectedRadio: "anonymous", isPending: false };
-	tagsList = [1, 2, 3, "dupa"].map(elem => <Select.Option key={elem}>{elem}</Select.Option>);
+	tagsList = [1, 2, 3, "foo"].map(elem => <Select.Option key={elem}>{elem}</Select.Option>);
 
 	selectRadio = event => {
 		this.setState({
