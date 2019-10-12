@@ -1,11 +1,13 @@
 import React from "react";
 
 import MemberList from "../TeamViewComponents/MemberList";
+import Nav from "../Nav"
 import "./TeamView.css";
 
 export default function TeamView() {
 	return (
 		<div className="team-view__wrapper">
+            <Nav />
 			<MemberList
 				members={[
 					{ position: "Internal Tactics Planner", name: "Jacobs", chef: true },
