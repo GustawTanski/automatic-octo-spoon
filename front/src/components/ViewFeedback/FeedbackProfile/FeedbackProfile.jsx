@@ -32,7 +32,7 @@ function Profile(props) {
 
 class FeedbackProfile extends React.Component {
 	renderFeedbacks() {
-		return this.props.displayFeedback.map(feed => {
+		return this.props.getUserFeedback().map(feed => {
 			return (
 				<Card title={feed.title} style={{ width: "80%", margin: "5%", wordWrap: "break-word" }}>
 					<Rate className="modal__rating" disabled value={feed.stars} />
@@ -51,9 +51,9 @@ class FeedbackProfile extends React.Component {
 		return (
 			<div>
 				<Profile
-					name={`${faker.name.firstName()}`}
-					lastname={faker.name.lastName()}
-					position="senior java developer"
+					name={this.props.name}
+					lastname={this.props.lastname}
+					position={this.props.position}
 				/>
 				{this.renderFeedbacks()}
 			</div>

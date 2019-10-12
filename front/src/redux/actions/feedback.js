@@ -7,7 +7,7 @@ export const postFeedback = ({
 	content,
 	privacy,
 	recipientID,
-	isPublic = false,
+	isPrivate = false,
 	rating = undefined
 }) => {
 	return generateAsyncAction(
@@ -15,7 +15,7 @@ export const postFeedback = ({
 			title,
 			tags,
 			content,
-			isPublic,
+			isPrivate,
 			privacy,
 			recipientID,
 			rating

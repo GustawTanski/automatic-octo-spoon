@@ -4,7 +4,7 @@ import requestApi from "../api/index";
 export function getUsersTeam() {
 	return (dispatch, getStore) => {
 		const { team } = getStore();
-		console.log(team);
+		// console.log(team);
 		dispatch(generateAsyncAction(requestApi.get("/users", { headers: { team } }), GET_USERS_TEAM));
 	};
 }

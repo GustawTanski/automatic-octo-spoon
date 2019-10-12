@@ -1,10 +1,11 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import HashRouter from "./ReduxedHashRouter";
 
 import TeamView from "./views/TeamView";
 
-export default function App() {
+function App() {
 	return (
 		<HashRouter>
 			<Switch>
@@ -14,4 +15,4 @@ export default function App() {
 	);
 }
 
-export default connect(mapStateToProps)(App);
+export default connect()(App);
