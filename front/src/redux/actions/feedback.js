@@ -1,5 +1,5 @@
 import requestApi from "../api/index";
-import { POST_FEEDBACK } from "./types";
+import { POST_FEEDBACK, generateAsyncAction } from "./actionGenerator";
 
 export const postFeedback = ({
 	title,
@@ -7,37 +7,17 @@ export const postFeedback = ({
 	content,
 	isPublic = false,
 	recipientID,
-	rating = 0
+	rating = undefined
 }) => {
-	return dispatch => {
-		dispatch(postFeedbackStarted());
-
-		requestApi
-			.post(`/users/${recipientID}/feedbacks`, {
-				title,
-				tags,
-				content,
-				isPublic,
-				recipientID,
-				rating
-			})
-			.then(res => {
-				dispatch(postFeedbackSuccess(res.data));
-			})
-			.catch(err => {
-				dispatch(postFeedbackFailure(err.message));
-			});
-	};
+	return generateAsyncAction(
+		requestApi.post(`/users/${recipientID}/feedbacks`, {
+			title,
+			tags,
+			content,
+			isPublic,
+			recipientID,
+			rating
+		}),
+		POST_FEEDBACK
+	);
 };
-
-const postFeedbackStarted = () => ({
-	type: POST_FEEDBACK.STARTED
-});
-
-const postFeedbackFailure = () => ({
-	type: POST_FEEDBACK.FAILURE
-});
-
-const postFeedbackSuccess = () => ({
-	type: POST_FEEDBACK.SUCCESS
-});

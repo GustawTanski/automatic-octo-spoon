@@ -1,18 +1,15 @@
 import React from "react";
-import { Input, Select, Rate, Radio } from "antd";
+import { Input, Select, Rate, Radio, Button } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import { connect } from "react-redux";
+import { postFeedback } from "../../redux/actions/feedback";
 import "./style.css";
 
 class FeedbackModal extends React.Component {
-	constructor() {
-		super();
-		// this.contextRedux = ReactReduxContext;
+	onClick() {
+		this.props.addFeedback("title");
 	}
-	// static contextType = ReactReduxContext;
-
 	render() {
-		console.log(this);
 		return (
 			<div className="modal">
 				<Input placeholder="Title" />
@@ -27,13 +24,27 @@ class FeedbackModal extends React.Component {
 					<Radio.Button value="public">Public</Radio.Button>
 				</Radio.Group>
 				<Rate className="modal__rating" allowHalf />
+				<Button onClick={this.onClick.bind(this)}>run</Button>
 			</div>
 		);
 	}
 }
 
 const map = state => {
-	return state;
+	return {
+		feedbackPost: state.feedbackPostReducer
+	};
 };
 
-export default connect(map)(FeedbackModal);
+const mapDispatchToProps = dispatch => {
+	return {
+		addFeedback: title => {
+			dispatch(postFeedback(title));
+		}
+	};
+};
+
+export default connect(
+	map,
+	mapDispatchToProps
+)(FeedbackModal);

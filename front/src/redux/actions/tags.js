@@ -1,7 +1,7 @@
-import { POST_TAG } from "./types";
+import { POST_TAG, GET_ALL_TAGS } from "./actionGenerator";
 import requestApi from "../api/index";
 
-export default function postTag(tagName) {
+export function postTag(tagName) {
 	return dispatch => {
 		requestApi
 			.post(
@@ -9,11 +9,11 @@ export default function postTag(tagName) {
 				{
 					tagName
 				}.then(res => {
-					dispatch(postTagSuccess);
+					dispatch(postTagSuccess());
 				})
 			)
 			.catch(err => {
-				dispatch(postTagFailure);
+				dispatch(postTagFailure());
 			});
 	};
 }
@@ -27,5 +27,37 @@ const postTagSuccess = () => {
 const postTagFailure = () => {
 	return {
 		type: POST_TAG.FAILURE
+	};
+};
+
+export function getAllTags() {
+	return dispatch => {
+		dispatch(getAllTagsStarted());
+
+		requestApi
+			.get("/tags")
+			.then(res => {
+				dispatch(getAllTagsSuccess(res));
+			})
+			.catch(err => {
+				dispatch(getAllTagsFailure(err.message));
+			});
+	};
+}
+
+const getAllTagsSuccess = () => {
+	return {
+		type: GET_ALL_TAGS.SUCCESS
+	};
+};
+
+const getAllTagsFailure = () => {
+	return {
+		type: GET_ALL_TAGS.FAILURE
+	};
+};
+const getAllTagsStarted = () => {
+	return {
+		type: GET_ALL_TAGS.STARTED
 	};
 };

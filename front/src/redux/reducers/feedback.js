@@ -1,4 +1,4 @@
-import { POST_FEEDBACK } from "../actions/types";
+import { POST_FEEDBACK } from "../actions/actionGenerator";
 
 const initialState = {
 	isPending: false,
@@ -23,8 +23,8 @@ export function feedbackPostReducer(state = initialState, action) {
 			return {
 				...state,
 				isPending: false,
-				error: action.payload.error,
-				statusCode: action.payload.status
+				error: action.payload,
+				statusCode: action.payload
 			};
 		default:
 			return state;
