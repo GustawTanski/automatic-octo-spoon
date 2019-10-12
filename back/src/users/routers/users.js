@@ -30,4 +30,16 @@ router.post('/', async (req, res) => {
 
 });
 
+router.get('/', async (req, res) => {
+    console.log('Hello from GET');
+    
+    try {
+        const users = await model.User.find();
+        res.send(users);
+    } catch (err) {
+        console.log(err);
+    }
+
+});
+
 module.exports = router;
