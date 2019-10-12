@@ -4,7 +4,7 @@ import showFeedbackModal from "../../FeedbackModal/index";
 
 import "./Actions.css";
 
-export default function Actions({ color: {bg = "", font = ""} = {}}) {
+export default function Actions({ color: { bg = "", font = "" } = {} }) {
 	const onKeyDown = useCallback(event => {
 		if (event.keyCode == 13) {
 			showFeedbackModal();
@@ -31,11 +31,11 @@ export default function Actions({ color: {bg = "", font = ""} = {}}) {
 					onPointerDown={showFeedbackModal}
 					onKeyDown={onKeyDown}
 					size="small"
-                    style={{
-                        background: bg,
-                        color: font,
-                        "--bg": bg
-                    }}
+					style={{
+						background: bg,
+						color: font,
+						"--bg": bg
+					}}
 				>
 					Feedback
 				</Button>

@@ -3,7 +3,7 @@ import { Modal, Input, Select, Rate, Radio } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import "./style.css";
 
-const { confirm } = Modal; 
+const { confirm } = Modal;
 
 export default function showFeedbackModal() {
 	confirm({
