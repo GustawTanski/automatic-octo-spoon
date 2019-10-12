@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "antd";
+import { connect } from 'react-redux';
 import FeedbackInfo from "../FeedbackInfo/FeedbackInfo";
 import "./FeedbackMain.css";
 
@@ -72,4 +73,8 @@ class FeedbackMain extends React.Component {
         return <div>{this.renderListOfFeedback()}</div>;
     }
 }
+const mapStateToProps = (state) => {
+    return { feedbacks: state.feedbacks }
+};
 export default FeedbackMain;
+// export default connect(mapStateToProps)(FeedbackMain);
