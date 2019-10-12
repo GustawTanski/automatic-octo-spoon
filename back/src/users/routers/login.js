@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     const valid = await bcrypt.compare(req.body.password, user.password);
     if(!valid) return res.status(400).send('Invalid email or password');
 
-    const token = jwt.sign({_id: user._id, isBoss: user.isBoss}, 'jwtPrivateKey');
+    const token = jwt.sign({_id: user._id, isBoss: user.isBoss}, process.env.JWT);
 
     res.header('x-auth-token', token).send(team.name);
 
