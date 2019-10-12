@@ -1,6 +1,8 @@
 import React from "react";
 import { Modal, Input, Select, Rate, Radio } from "antd";
 import TextArea from "antd/lib/input/TextArea";
+import { connect } from "react-redux";
+import { postFeedback } from "../../"
 import "./style.css";
 
 const { confirm } = Modal;
@@ -9,7 +11,7 @@ const { Group, Button } = Radio;
 export default function showFeedbackModal(username) {
 	confirm({
 		title: `Submit a feedback ${username ? "to " + username : ""}`,
-		content: <FeedbackModal />,
+		content: <Feedback />,
 		icon: null,
 		okText: "Submit",
 		onOk
@@ -18,7 +20,9 @@ export default function showFeedbackModal(username) {
 
 function onOk() {
 	// TODO:: Implement
-	console.log("ok");
+    setTimeout(() => {
+        
+    }, 2000);
 }
 
 class FeedbackModal extends React.Component {
@@ -63,20 +67,23 @@ class FeedbackModal extends React.Component {
 	}
 }
 
-// const mapDispatchToProps = dispatch => {
-// 	return {
-// 		onPost: (title, body) => {
-// 			dispatch(postFeedback(title, body));
-// 		}
-// 	};
-// };
-// const mapStateToProps = state => {
-// 	return {
-// 		isPending: state.feedbackPostReducer.isPending
-// 	};
-// };
+const mapDispatchToProps = dispatch => {
+	return {
+		onPost: (title, body) => {
+			dispatch(postFeedback(title, body));
+		}
+	};
+};
 
-// const Feedback = connect(
-// 	mapStateToProps,
-// 	mapDispatchToProps
-// )(FeedbackModal);
+const mapStateToProps = state => {
+	return {
+		isPending: state.feedbackPostReducer.isPending
+	};
+};
+
+const Feedback = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(FeedbackModal);
+
+// const Feedback = FeedbackModal;
