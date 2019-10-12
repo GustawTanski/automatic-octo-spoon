@@ -21,7 +21,6 @@ export function feedbackPostReducer(state = initialState, action) {
 				statusCode: 200
 			};
 		case POST_FEEDBACK.FAILURE:
-			console.log("PAYLOAD", action);
 			return {
 				...state,
 				isPending: false

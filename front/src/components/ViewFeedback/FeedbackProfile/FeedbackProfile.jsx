@@ -47,10 +47,8 @@ class FeedbackProfile extends React.Component {
 					<Rate className="modal__rating" disabled value={feed.stars} />
 					<p>{feed.content}</p>
 					<Divider />
-					{console.log(feed.tags)}
 					{feed.tags.map(tag => {
 						let index = Math.floor(Math.random() * tagColors.length);
-						console.log(index);
 						return <Tag color={tagColors[index]}>{tag}</Tag>;
 					})}
 				</Card>
