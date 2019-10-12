@@ -4,7 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const model = require('../models/userModel');
+const userModel = require('../models/userModel');
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
     console.log('Hello from login POST');
     console.log(req.body);
 
-    const user = await model.User.findOne({email: req.body.email});
+    const user = await userModel.User.findOne({email: req.body.email});
     if (!user) return res.status(404).send('Invalid email or password');
 
     const valid = await bcrypt.compare(req.body.password, user.password);

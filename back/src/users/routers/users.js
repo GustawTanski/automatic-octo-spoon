@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
     if (email) return res.status(404).send('The user with the given email already exist');
     if(!team) return res.status(400).send('Provided team does not exist.');
 
-    const user = new model.User({
+    const user = new userModel.User({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
