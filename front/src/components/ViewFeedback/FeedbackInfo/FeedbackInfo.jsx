@@ -14,7 +14,6 @@ class FeedbackInfo extends React.Component {
 	handleCancel = () => {
 		this.setState({ visible: false });
 	};
-
 	connectTags = (title, tags) => {
 		const connectedTags = tags.map((tag, i) => <Tag key={i}>{tag}</Tag>);
 		return (
@@ -43,12 +42,12 @@ class FeedbackInfo extends React.Component {
 						</Button>
 					]}
 				>
-					{author &&
+					{author && (
 						<div>
 							<Avatar icon="user" />
 							<span className="authorWrapper__item">{author}</span>
 						</div>
-					}
+					)}
 					<p>{content}</p>
 					<Rate className="modal__rating" allowHalf defaultValue={rate} disabled />
 				</Modal>

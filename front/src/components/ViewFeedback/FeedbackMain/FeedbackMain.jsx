@@ -43,9 +43,10 @@ class FeedbackMain extends React.Component {
             },
             {
                 title: "FEEDBACK SYKS",
-                content: "Content 5 lorem ipsum blablabl ab labla5 lorem ipsum blabla blablabla5 lorem ipsum blablabl ablabla5 lorem ipsum blabl abla blabla5 lorem ipsum blablab lablabla5 lorem ipsum blablablab labla5 lorem ipsum blabl ablablabla5 lorem ipsum blablab lablabla5 lorem ipsum blablab lablabla5 lorem ipsum blablabl ablabla5 lorem ipsum blabla blablab lablabla",
+                content:
+                    "Content 5 lorem ipsum blablabl ab labla5 lorem ipsum blabla blablabla5 lorem ipsum blablabl ablabla5 lorem ipsum blabl abla blabla5 lorem ipsum blablab lablabla5 lorem ipsum blablablab labla5 lorem ipsum blabl ablablabla5 lorem ipsum blablab lablabla5 lorem ipsum blablab lablabla5 lorem ipsum blablabl ablabla5 lorem ipsum blabla blablab lablabla",
                 author: "DAMIAN",
-                rate: 1.5,
+                rate: 5,
                 tags: ["react", "tag2", "tag3"]
             }
         ];
