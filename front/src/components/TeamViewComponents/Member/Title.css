@@ -10,3 +10,12 @@
 	font-style: italic;
 	font-size: 0.9em;
 }
+
+.member__name {
+	display: flex;
+	align-items: center;
+}
+
+.member__name .ant-badge {
+	margin: 0 7px;
+}

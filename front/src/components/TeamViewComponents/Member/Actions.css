@@ -1,3 +1,18 @@
 .member__actions .anticon {
 	cursor: pointer;
 }
+
+.member__actions .anticon:focus {
+	/* filter: drop-shadow(1px 1px 2px var(--antd-wave-shadow-color)); */
+	color: var(--antd-wave-shadow-color);
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
+.member__actions .ant-btn {
+    border: none;
+}
+
+.member__actions .ant-btn:focus {
+	filter: drop-shadow(3px 3px 4px var(--bg));
+}
