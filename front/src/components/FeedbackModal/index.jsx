@@ -34,8 +34,6 @@ const onOk = async close => {
 		});
 	});
 
-	console.log(result.title, result.tags, result.content, false, recipientIDHolder, result.rating);
-
 	store.dispatch(
 		postFeedback(result.title, result.tags, result.content, false, recipientIDHolder, result.rating)
 	);
