@@ -2,13 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { Layout, Menu, Icon, Input, Select } from "antd";
 import Router from "react-router";
+import { } from '../../redux/actions/feedback';
 const { Sider } = Layout;
 
 const { SubMenu } = Menu;
 const { Option } = Select;
 const children = [];
 
-export default class FeedbackSider extends React.Component {
+class FeedbackSider extends React.Component {
 	state = { collapsed: false, sliderWidth: "15vw" };
 
 	onCollapse = collapsed => {
@@ -36,7 +37,6 @@ export default class FeedbackSider extends React.Component {
 		return (
 			<Layout style={{ minHeight: "100vh" }}>
 				<Sider
-					// style={{ width: "auto" }}
 					width={this.state.sliderWidth}
 					collapsible
 					collapsed={this.state.collapsed}
@@ -104,10 +104,10 @@ export default class FeedbackSider extends React.Component {
 							<Menu.Item key="7">Private</Menu.Item>
 							<Menu.Item key="8">Public</Menu.Item>
 						</SubMenu>
-
 					</Menu>
 				</Sider>
 			</Layout>
 		);
 	}
 }
+export default connect(null)(FeedbackSider);

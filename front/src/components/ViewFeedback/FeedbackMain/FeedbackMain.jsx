@@ -5,18 +5,30 @@ import FeedbackInfo from "../FeedbackInfo/FeedbackInfo";
 import switchColors from "./switchColors";
 import "./FeedbackMain.css";
 
-const configStyle = {
-	width: "400px",
-	maxHeight: "150px",
-	margin: "5px"
-};
 const bgColors = {
-	red: "red",
-	orange: "orange",
+	red: "#730029",
+	orange: "#866423",
 	default: "#082567"
 };
-
 class FeedbackMain extends React.Component {
+	state = {
+		configStyle: {
+			width: "400px",
+			maxHeight: "150px",
+			margin: "5px"
+		}
+	}
+	componentDidMount() {
+		if (window.innerWidth < 400) {
+			this.setState({
+				configStyle: {
+					width: '285px',
+					maxHeight: "150px",
+					margin: "10px"
+				}
+			});
+		};
+	};
 	renderCards = () => {
 		// const listOfCards = this.props.feedbacks.map(feedback => {
 		//     const description = feedback.content.substring(0, 30);
@@ -112,7 +124,7 @@ class FeedbackMain extends React.Component {
 			const background = switchColors(feedback.rate, bgColors);
 			return (
 				<Card
-					style={{ ...configStyle, backgroundColor: background }}
+					style={{ ...this.state.configStyle, backgroundColor: background }}
 					key={index}
 					title={feedback.title}
 					bordered={false}

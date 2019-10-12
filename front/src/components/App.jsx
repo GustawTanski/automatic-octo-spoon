@@ -7,7 +7,6 @@ class App extends React.Component {
 	buttonHandle() {
 		this.props.onPost("What", "HENLO");
 	}
-
 	render() {
 		return (
 			<div>
