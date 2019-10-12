@@ -1,0 +1,8 @@
+.member__avatar .ant-avatar {
+	vertical-align: middle;
+	font-size: 1.6rem;
+}
+
+.member__avatar {
+	position: relative;
+}
