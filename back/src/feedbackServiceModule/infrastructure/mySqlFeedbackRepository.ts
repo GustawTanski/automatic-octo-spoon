@@ -2,23 +2,40 @@ import FeedbackRepositoryPort from "../core/feedbackRepositoryPort";
 import { Repository, getRepository } from "typeorm";
 import { FeedbackEntity } from "./model/feedbackEntity";
 import Feedback from "../core/domain/Feedback";
+import Tag from "./model/Tag";
 
 export default class MySqlFeedbackRepository implements FeedbackRepositoryPort{
-    private repository: Repository<FeedbackEntity>;
+    private repository: Repository<Feedback>;
+    //private tagRepository: Repository<Tag>;
 
     constructor(){
-        this.repository = getRepository(FeedbackEntity);
+        this.repository = getRepository(Feedback);
+        //this.tagRepository = getRepository(Tag);
     }
 
     async save(feedback: Feedback): Promise<Feedback> {
-        throw new Error("Method not implemented.");
+        let saved = await this.repository.save(feedback);
+        return saved;
     }
 
     async selectByTargetId(targetId: string): Promise<Feedback[]> {
-        throw new Error("Method not implemented.");
+        let feedbacks = await this.repository.find({targetId: targetId});
+        return feedbacks;
     }
 
-    async selectTagsOnlyByTargetId(targetId: string): Promise<string> {
-        throw new Error("Method not implemented.");
+    async selectTagsOnlyByTargetId(targetId: string): Promise<string[]> {
+        let feedbacks = await this.repository.find({targetId: targetId});
+        let listOfTagArrays = feedbacks.map(item => item.tags);
+        let jointArray: string[] = [];
+
+        listOfTagArrays.forEach(array => {
+            jointArray = [...jointArray, ...array]
+        });
+
+        let tags = jointArray.filter((item,index) => jointArray.indexOf(item) === index)
+
+        /*let jointTagsArray = 
+        let tags = jointTagsArray.filter((item,index) => jointTagsArray.indexOf(item) === index)*/
+        return tags;
     }
 }
