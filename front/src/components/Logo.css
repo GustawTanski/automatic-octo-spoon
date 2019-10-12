@@ -1,5 +1,12 @@
-.logo__log {
+.logo__logo {
 	font-family: "Lobster Two";
 	font-size: 1.5rem;
 	margin-top: 10px;
+}
+
+
+@media only screen and (min-width:) {
+    .logo__logo {
+        
+    }
 }

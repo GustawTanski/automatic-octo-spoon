@@ -13,7 +13,7 @@ export default function Nav() {
 	}, []);
 
 	return (
-		<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+		<div className="nav__wrapper">
 			<Logo />
 			<Menu onClick={onClick} mode="horizontal" selectedKeys={[current]} className="nav__nav">
 				<Menu.Item key="team">
