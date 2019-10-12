@@ -9,11 +9,6 @@ const teams = require('./users/routers/teams');
 const login = require('./users/routers/login');
 
 const app = express();
-/*
-if(!config.get('jwtPrivateKey')) {
-    console.error('jwtPrivateKey is not defined');
-    process.exit(1);
-};*/
 
 connectdb.connectToDB();
 app.use(cors());

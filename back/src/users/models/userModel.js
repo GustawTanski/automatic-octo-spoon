@@ -9,8 +9,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     password: {
         type: String,
@@ -25,6 +24,11 @@ const userSchema = new mongoose.Schema({
     team: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Team'
+    },
+    position: {
+        type: String,
+        minlength: 4,
+        maxlength: 64
     },
     date: {
         type: Date,
