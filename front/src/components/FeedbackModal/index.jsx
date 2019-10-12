@@ -24,11 +24,10 @@ function onOk(close) {
 	// TODO:: Implement
 	formRef.current.validateFields((err, values) => {
 		if (!err) {
-			console.log(values);
+            console.log(values);
+            close();
 		}
 	});
-
-	close();
 }
 
 class FeedbackModal extends React.Component {
@@ -77,7 +76,7 @@ class FeedbackModal extends React.Component {
 								{
 									required: true,
 									max: 2048,
-									message: "Feedback's message is required"
+									message: "Message is required"
 								}
 							]
 						})(<TextArea placeholder="Content" autosize={{ minRows: 2, maxRows: 8 }} />)}
