@@ -21,7 +21,7 @@ class FeedbackSider extends React.Component {
 		}, 1);
 	};
 	componentDidMount() {
-		this.props.getFeedback()
+		this.props.getFeedback();
 	}
 	componentWillMount() {
 		if (window.innerWidth < 700) {
@@ -115,4 +115,7 @@ class FeedbackSider extends React.Component {
 // const mapStateToProps = () => {
 // 	return { feedbacks:}
 // };
-export default connect(null, { getFeedback })(FeedbackSider);
+export default connect(
+	null,
+	{ getFeedback }
+)(FeedbackSider);
