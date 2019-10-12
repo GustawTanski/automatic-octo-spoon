@@ -13,16 +13,7 @@ const flexDisplayProfile = {
 	margin: "5% auto",
 	wordWrap: "break-word"
 };
-const tagColors = [
-	"#f50f50",
-	"#2db7f5",
-	"#87d068",
-	"#108ee9",
-	"#389e0d",
-	"#0050b3",
-	"#c41d7f",
-	"#1d39c4"
-];
+const tagColors = ["#f50f50", "#2db7f5", "#108ee9", "#389e0d", "#0050b3", "#c41d7f", "#1d39c4"];
 
 function Profile(props) {
 	return (
@@ -41,7 +32,7 @@ function Profile(props) {
 
 class FeedbackProfile extends React.Component {
 	renderFeedbacks() {
-		return this.props.getFeedback(this.props.recipientId).map(feed => {
+		return this.props.displayFeedback.map(feed => {
 			return (
 				<Card title={feed.title} style={{ width: "80%", margin: "5%", wordWrap: "break-word" }}>
 					<Rate className="modal__rating" disabled value={feed.stars} />
@@ -72,7 +63,7 @@ class FeedbackProfile extends React.Component {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		getFeedback: idRecipient => {
+		getUserFeedback: idRecipient => {
 			dispatch(getFeedback(idRecipient));
 		}
 	};
