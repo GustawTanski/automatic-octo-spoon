@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Input, Select, Rate, Radio, Form } from "antd";
 import TextArea from "antd/lib/input/TextArea";
+import store from "../../redux/index";
 import "./style.css";
 
 const { confirm } = Modal;
@@ -12,7 +13,7 @@ const formRef = React.createRef();
 export default function showFeedbackModal(username) {
 	confirm({
 		title: `Submit a feedback ${username ? "to " + username : ""}`,
-		content: <FormFeedback ref={formRef} />,
+		content: <Feedback ref={formRef} />,
 		okText: "Submit",
 		centered: true,
 		icon: null,
@@ -21,11 +22,10 @@ export default function showFeedbackModal(username) {
 }
 
 function onOk(close) {
-	// TODO:: Implement
 	formRef.current.validateFields((err, values) => {
 		if (!err) {
             console.log(values);
-            close();
+			close();
 		}
 	});
 }
@@ -38,7 +38,7 @@ class FeedbackModal extends React.Component {
 		this.setState({
 			selectedRadio: event.target.value
 		});
-	};
+    };
 
 	render() {
 		const { getFieldDecorator } = this.props.form;
@@ -102,4 +102,4 @@ class FeedbackModal extends React.Component {
 	}
 }
 
-const FormFeedback = Form.create()(FeedbackModal);
+const Feedback = Form.create()(FeedbackModal);

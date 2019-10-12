@@ -1,9 +1,10 @@
 import React from "react";
 import { HashRouter, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import { Button } from "antd";
-import showFeedbackModal from "./FeedbackModal/";
+import showFeedbackModal from "./FeedbackModal";
 
-export default function App() {
+function App() {
 	return (
 		<HashRouter>
 			<Switch>
@@ -12,3 +13,8 @@ export default function App() {
 		</HashRouter>
 	);
 }
+const map = state => {
+	console.log(state);
+	return state;
+};
+export default connect(map)(App);
