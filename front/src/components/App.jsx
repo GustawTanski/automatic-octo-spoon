@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { testLog } from "../redux/actions/test";
+import { postFeedback } from "../redux/actions/feedback";
+import { Spin, Button, Card } from "antd";
 
 class App extends React.Component {
-	runReducer() {
-		this.props.testLog("hello");
+	buttonHandle() {
+		this.props.onPost("What", "HENLO");
 	}
 
 	render() {
@@ -13,22 +14,36 @@ class App extends React.Component {
 		return (
 			<div>
 				<h1>it works</h1>
-				<button onClick={this.runReducer.bind(this)}>click</button>
-				{this.props.tests.map(x => {
-					return <h1>{x}</h1>;
-				})}
+				<Button onClick={this.buttonHandle.bind(this)}>click</Button>
+				<Card>
+					<Spin spinning={this.props.isPending}>
+						<div>
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus, at tempore.
+							Expedita adipisci odit harum soluta! In nam architecto saepe? Excepturi similique
+							ipsam et neque totam quia adipisci ratione a.
+						</div>
+					</Spin>
+				</Card>
 			</div>
 		);
 	}
 }
 
+const mapDispatchToProps = dispatch => {
+	return {
+		onPost: (title, body) => {
+			dispatch(postFeedback(title, body));
+		}
+	};
+};
+
 const mapStateToProps = state => {
 	return {
-		tests: state.testReducer
+		isPending: state.feedbackReducer.isPending
 	};
 };
 
 export default connect(
 	mapStateToProps,
-	{ testLog }
+	mapDispatchToProps
 )(App);

@@ -1,4 +1,4 @@
 import { combineReducers } from "redux";
-import { testReducer } from "./test";
-
-export default combineReducers({ testReducer });
+import { feedbackPostReducer } from "./feedback";
+import { tagReducer } from "./tags";
+export default combineReducers({ feedbackPostReducer, tagReducer });
