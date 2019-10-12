@@ -1,11 +1,25 @@
+.nav__wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 @media only screen and (min-width: 1024px) {
 	.nav__nav {
 		font-size: 1.2rem;
-		transform-origin: center top;
-		transform: scale(1.3);
-		margin-bottom: 20px;
+
 		display: flex;
 		justify-content: space-between;
-		width: 50vw;
+		width: 40vw;
+	}
+	.nav__wrapper {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		transform-origin: center top;
+		transform: scale(1.3);
+		width: 70vw;
+		margin-bottom: 40px;
+		margin-top: 30px;
 	}
 }
