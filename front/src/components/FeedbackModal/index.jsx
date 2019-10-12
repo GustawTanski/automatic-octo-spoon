@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Input, Select, Rate, Radio, Form } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import store from "../../redux/index";
+import { postFeedback } from "../../redux/actions/feedback";
 import "./style.css";
 
 const { confirm } = Modal;
@@ -9,6 +10,7 @@ const { Group, Button } = Radio;
 const { Item } = Form;
 
 const formRef = React.createRef();
+let closeModal;
 
 export default function showFeedbackModal(username) {
 	confirm({
@@ -21,24 +23,40 @@ export default function showFeedbackModal(username) {
 	});
 }
 
-function onOk(close) {
-	formRef.current.validateFields((err, values) => {
-		if (!err) {
-            console.log(values);
-			close();
-		}
+const onOk = async close => {
+	closeModal = close;
+
+	const result = await new Promise((resolve, reject) => {
+		formRef.current.validateFields((err, values) => {
+			err ? reject(err) : resolve(values);
+		});
 	});
-}
+
+	store.dispatch(
+		postFeedback(result.title, result.tags, result.content, false, null, result.rating)
+	);
+
+	throw "This has to be thrown or modal will get closed too early :D";
+};
+
+store.subscribe(() => handlePending(closeModal));
+
+const handlePending = close => {
+	const { isPending } = store.getState().feedbackPostReducer;
+	console.log("handling" + isPending);
+
+	if (!isPending) close();
+};
 
 class FeedbackModal extends React.Component {
-	state = { selectedRadio: "anonymous" };
+	state = { selectedRadio: "anonymous", isPending: false };
 	tagsList = [1, 2, 3, "dupa"].map(elem => <Select.Option key={elem}>{elem}</Select.Option>);
 
 	selectRadio = event => {
 		this.setState({
 			selectedRadio: event.target.value
 		});
-    };
+	};
 
 	render() {
 		const { getFieldDecorator } = this.props.form;
@@ -57,7 +75,7 @@ class FeedbackModal extends React.Component {
 					})(<Input placeholder="Title" />)}
 				</Item>
 				<Item>
-					{getFieldDecorator("select")(
+					{getFieldDecorator("tags")(
 						<Select
 							ref={this.selectRef}
 							mode="tags"
@@ -96,7 +114,7 @@ class FeedbackModal extends React.Component {
 						</Group>
 					)}
 				</Item>
-				<Item>{getFieldDecorator("rate")(<Rate className="modal__rating" allowHalf />)}</Item>
+				<Item>{getFieldDecorator("rating")(<Rate className="modal__rating" allowHalf />)}</Item>
 			</Form>
 		);
 	}
