@@ -1,11 +1,8 @@
 import express, { Router, Request, Response, NextFunction } from "express";
 import asyncHandler from "express-async-handler";
 import FeedbackServicePort from "../core/feedbackServicePort";
-/*import NoteServicePort from "../core/noteServicePort";
-import NewNoteDto from "./models/newNoteDto";
-import { validate, validateAsClass } from "joiful";
-import NoteDtoMapper from "./models/mappers/noteDtoMapper";
-import auth from "../../middlewares/auth";*/
+import { getConnection } from "typeorm";
+import { FeedbackEntity } from "../infrastructure/model/feedbackEntity";
 
 export default class RestInterface{
     private _router: Router;
@@ -21,6 +18,11 @@ export default class RestInterface{
         this.router.get('/feedbacks', asyncHandler(async (req, res, next) => {
             //let userId = this.extractUserId(req);
             //let notes = await ;
+
+            let feedback = new FeedbackEntity(undefined,"New title.","################");
+            await getConnection().manager.save(feedback);
+            console.log("Feedback saved!");
+
             res.status(200).send({works: "yes"});
         }));
 

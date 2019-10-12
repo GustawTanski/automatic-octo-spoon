@@ -35,7 +35,12 @@
     }
   },
   "dependencies": {
+    "auto-mapping": "^1.0.16",
     "express": "^4.17.1",
-    "express-async-handler": "^1.1.4"
+    "express-async-handler": "^1.1.4",
+    "joiful": "^1.1.0",
+    "mysql": "^2.17.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.19"
   }
 }
