@@ -14,9 +14,10 @@ function generateTypes(prependString) {
 	};
 }
 
-const generateAction = type => {
+const generateAction = (type, payload) => {
 	return {
-		type
+		type,
+		payload
 	};
 };
 
