@@ -4,11 +4,13 @@ import { connect } from "react-redux";
 import { Button } from "antd";
 import showFeedbackModal from "./FeedbackModal";
 
-function App() {
+import TeamView from "./views/TeamView";
+
+export default function App() {
 	return (
 		<HashRouter>
 			<Switch>
-				<Button onClick={showFeedbackModal}>Show a modal</Button>
+				<Route path="/" component={TeamView} />
 			</Switch>
 		</HashRouter>
 	);
