@@ -10,15 +10,13 @@ class LoginView extends React.Component {
 
 		this.props.form.validateFields(async (err, values) => {
 			if (!err) {
-				const token = await requestApi.post("/login", {
-					body: {
-						email: values.email,
-						password: values.password,
-						team: values.team
-					}
-				});
+				// const x = await requestApi.post("/login", {
+				// 	email: values.email,
+				// 	password: values.password,
+				// 	team: values.team
+				// });
 
-				this.props.setToken(token);
+				// this.props.setToken();
 			}
 		});
 	};
@@ -56,5 +54,7 @@ class LoginView extends React.Component {
 const Temp = Form.create()(LoginView);
 export default connect(
 	null,
-	setToken
+	{
+		setToken
+	}
 )(Temp);

@@ -9,7 +9,7 @@ export default function App() {
 	return (
 		<HashRouter>
 			<Switch>
-				<Route path="/" component={LoginView} />
+				<Route path="/" component={TeamView} />
 			</Switch>
 		</HashRouter>
 	);

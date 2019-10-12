@@ -13,6 +13,6 @@ export default combineReducers({
 	history,
 	routerContext,
 	users,
-    team,
-    token
+	team,
+	token
 });
