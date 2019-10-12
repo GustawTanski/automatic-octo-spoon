@@ -10,7 +10,6 @@ const { Option } = Select;
 const children = [];
 
 class FeedbackSider extends React.Component {
-
 	state = { collapsed: false, sliderWidth: "15vw", isPrivate: false, tags: [], currentUser: 20 };
 
 	onCollapse = collapsed => {
@@ -26,43 +25,44 @@ class FeedbackSider extends React.Component {
 	};
 
 	onSelectAccess = ({ item, key, keyPath, selectedKeys, domEvent }) => {
-		console.log(key)
+		console.log(key);
 		switch (key) {
 			case "1":
-				this.setState({ tags: [this.props.tags[0]] })
+				this.setState({ tags: [this.props.tags[0]] });
 				break;
 			case "2":
-				this.setState({ tags: [this.props.tags[1]] })
+				this.setState({ tags: [this.props.tags[1]] });
 				break;
 			case "3":
-				this.setState({ tags: [this.props.tags[2]] })
+				this.setState({ tags: [this.props.tags[2]] });
 				break;
 			case "4":
-				this.setState({ tags: [this.props.tags[3]] })
+				this.setState({ tags: [this.props.tags[3]] });
 				break;
 			case "5":
-				this.setState({ tags: [this.props.tags[4]] })
+				this.setState({ tags: [this.props.tags[4]] });
 				break;
 			case "50":
-				this.setState({ isPrivate: true })
+				this.setState({ isPrivate: true });
 				break;
 			case "51":
-				this.setState({ isPrivate: false })
+				this.setState({ isPrivate: false });
 				break;
 			default:
 		}
-	}
+	};
 
 	onSubmit = () => {
-		const arr = this.props.feedbacks.some(feedback => this.state.tags.indexOf(feedback) >= 0)
-			.filter(feedback => feedback.isPrivate === this.state.isPrivate)
-		this.props.getUsers(arr)
-	}
+		const arr = this.props.feedbacks
+			.some(feedback => this.state.tags.indexOf(feedback) >= 0)
+			.filter(feedback => feedback.isPrivate === this.state.isPrivate);
+		this.props.getUsers(arr);
+	};
 
-	handleChange = (value) => {
-		this.setState({ tags: value })
+	handleChange = value => {
+		this.setState({ tags: value });
 		console.log(value);
-	}
+	};
 
 	componentWillMount() {
 		if (window.innerWidth < 700) {
@@ -90,7 +90,12 @@ class FeedbackSider extends React.Component {
 					onCollapse={this.onCollapse}
 				>
 					<div className="logo" />
-					<Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline" onSelect={this.onSelectAccess}>
+					<Menu
+						theme="dark"
+						defaultSelectedKeys={["1"]}
+						mode="inline"
+						onSelect={this.onSelectAccess}
+					>
 						<Menu.Item
 							style={{ height: "auto" }}
 							key="1"
@@ -111,7 +116,6 @@ class FeedbackSider extends React.Component {
 								onChange={this.handleChange}
 							>
 								{children}
-
 							</Select>
 						</Menu.Item>
 
@@ -140,13 +144,11 @@ class FeedbackSider extends React.Component {
 								</span>
 							}
 						>
-							{this.props.users.map((user, i) =>
+							{this.props.users.map((user, i) => (
 								<Menu.Item key={i.toString}>user.name</Menu.Item>
-							)}
-
+							))}
 						</SubMenu>
 						<SubMenu
-
 							key="sub3"
 							title={
 								<span>
@@ -158,15 +160,17 @@ class FeedbackSider extends React.Component {
 							<Menu.Item key="50">Private</Menu.Item>
 							<Menu.Item key="51">Public</Menu.Item>
 						</SubMenu>
-
 					</Menu>
 				</Sider>
 			</Layout>
 		);
 	}
 }
-const mapStateToProps = (state) => {
-	return { users: state.users }
-}
+const mapStateToProps = state => {
+	return { users: state.users };
+};
 
-export default connect(mapStateToProps, { getUsers })(FeedbackSider)
+export default connect(
+	mapStateToProps,
+	{ getUsers }
+)(FeedbackSider);

@@ -15,32 +15,36 @@ const bgColors = {
 const helpArr = [
 	{
 		title: "FEEDBACK ONE",
-		content: "	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
+		content:
+			"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
 		rate: 0.5,
 		tags: ["kon", "tag2", "tag3"]
 	},
 	{
 		title: "FEEDBACK TWO",
-		content: "	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
+		content:
+			"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
 		rate: 1,
 		tags: ["pies", "tag2", "tag3"]
 	},
 	{
 		title: "FEEDBACK TRZY",
-		content: "	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
+		content:
+			"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
 		rate: 1.5,
 		tags: ["kot", "tag2", "tag3"]
 	},
 	{
 		title: "FEEDBACK FYNF",
-		content: "	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
+		content:
+			"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
 		rate: 2,
 		tags: ["jaszczurka", "tag2", "tag3"]
 	},
 	{
 		title: "FEEDBACK SYKS",
 		content:
-		"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
+			"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
 		author: "DAMIAN",
 		rate: 2.5,
 		tags: ["react", "tag2", "tag3"]
@@ -48,7 +52,7 @@ const helpArr = [
 	{
 		title: "FEEDBACK SYKS",
 		content:
-		"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
+			"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
 		author: "DAMIAN",
 		rate: 3,
 		tags: ["react", "tag2", "tag3"]
@@ -56,7 +60,7 @@ const helpArr = [
 	{
 		title: "FEEDBACK SYKS",
 		content:
-		"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
+			"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
 		author: "DAMIAN",
 		rate: 3.5,
 		tags: ["react", "tag2", "tag3"]
@@ -72,7 +76,7 @@ const helpArr = [
 	{
 		title: "FEEDBACK SYKS",
 		content:
-		"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
+			"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
 		author: "DAMIAN",
 		rate: 4.5,
 		tags: ["react", "tag2", "tag3"]
@@ -80,7 +84,7 @@ const helpArr = [
 	{
 		title: "FEEDBACK SYKS",
 		content:
-		"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
+			"	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi excepturi reiciendis, nostrum itaque autem hic dolor praesentium quibusdam esse, nisi facere odio blanditiis amet quos porro nam veniam, tenetur facilis.",
 		author: "DAMIAN",
 		rate: 5,
 		tags: ["react", "tag2", "tag3"]
@@ -143,7 +147,6 @@ class FeedbackMain extends React.Component {
 		}
 		return listOfCards;
 	};
-
 
 	renderListOfFeedback = () => {
 		return <div className="cardsWrapper">{this.renderCards()}</div>;
