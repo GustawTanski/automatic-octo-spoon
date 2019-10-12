@@ -5,7 +5,9 @@ import { history } from "./history";
 import { routerContext } from "./routerContext";
 import { users } from "./users";
 import { team } from "./team";
+import { token } from "./token";
 import { currentUser } from "./setUser";
+
 export default combineReducers({
 	feedbackPostReducer,
 	tagReducer,
@@ -13,5 +15,6 @@ export default combineReducers({
 	routerContext,
 	users,
 	team,
+	token,
 	currentUser
 });
