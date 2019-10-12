@@ -17,7 +17,10 @@ export default class FeedbackSider extends React.Component {
 	};
 	onSelect = (val, opt) => {
 		setTimeout(() => {
+            // document.querySelector(`[title=${val}] svg`).style["margin-left"]="5px";
 			document.querySelector(`[title=${val}]`).style.width="calc(15vw + 20px)";
+			
+			// document.querySelector(`[title=${val}]`).style.display = "";
 		}, 1);
 	};
 
@@ -37,14 +40,14 @@ export default class FeedbackSider extends React.Component {
 		return (
 			<Layout style={{ minHeight: "100vh" }}>
 				<Sider
-                  
+                    // width={this.state.sliderWidth}
                     style ={{width:"auto"}}
 					collapsible
 					collapsed={this.state.collapsed}
 					onCollapse={this.onCollapse}
 				>
 					<div className="logo" />
-					<Menu theme="dark" defaultSelectedKeys={["1"]} mode="vertical">
+					<Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
 						<Menu.Item
 							style={{ height: "auto" }}
 							key="1"
@@ -67,16 +70,21 @@ export default class FeedbackSider extends React.Component {
 							</Select>
 						</Menu.Item>
 
-						<Menu.Item key="2">
-							<Icon type="pie-chart" />
-							<span>Option 1</span>
-						</Menu.Item>
-						<Menu.Item key="3">
-							<Icon type="desktop" />
-							<span>Option 2</span>
-						</Menu.Item>
-						<SubMenu
+                        <SubMenu
 							key="sub1"
+							title={
+								<span>
+									<Icon type="tags" />
+									<span>Tags</span>
+								</span>
+							}
+						>
+							<Menu.Item key="1">Uno</Menu.Item>
+							<Menu.Item key="2">Dos</Menu.Item>
+							<Menu.Item key="3">Tres</Menu.Item>
+						</SubMenu>
+						<SubMenu
+							key="sub2"
 							title={
 								<span>
 									<Icon type="user" />
@@ -89,21 +97,18 @@ export default class FeedbackSider extends React.Component {
 							<Menu.Item key="6">Alex</Menu.Item>
 						</SubMenu>
 						<SubMenu
-							key="sub2"
+							key="sub3"
 							title={
 								<span>
-									<Icon type="team" />
-									<span>Team</span>
+									<Icon type="key" />
+									<span>Access</span>
 								</span>
 							}
 						>
-							<Menu.Item key="6">Team 1</Menu.Item>
-							<Menu.Item key="8">Team 2</Menu.Item>
+							<Menu.Item key="7">Private</Menu.Item>
+							<Menu.Item key="8">Public</Menu.Item>
 						</SubMenu>
-						<Menu.Item key="9">
-							<Icon type="file" />
-							<span>File</span>
-						</Menu.Item>
+						
 					</Menu>
 				</Sider>
 			</Layout>
