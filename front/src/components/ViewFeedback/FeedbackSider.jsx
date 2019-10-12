@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Layout, Menu, Icon, Select } from "antd";
 import Router from "react-router";
-import {} from "../../redux/actions/feedback";
+import { getFeedback } from "../../redux/actions/feedback";
 const { Sider } = Layout;
 
 const { SubMenu } = Menu;
@@ -20,7 +20,9 @@ class FeedbackSider extends React.Component {
 			document.querySelector(`[title=${val}]`).style.width = "calc(15vw + 20px)";
 		}, 1);
 	};
-	componentDidMount() {}
+	componentDidMount() {
+		this.props.getFeedback()
+	}
 	componentWillMount() {
 		if (window.innerWidth < 700) {
 			this.setState({ collapsed: true, sliderWidth: "100vw" });
@@ -110,4 +112,7 @@ class FeedbackSider extends React.Component {
 		);
 	}
 }
-export default connect(null)(FeedbackSider);
+// const mapStateToProps = () => {
+// 	return { feedbacks:}
+// };
+export default connect(null, { getFeedback })(FeedbackSider);

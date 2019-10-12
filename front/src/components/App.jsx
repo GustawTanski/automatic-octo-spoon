@@ -1,7 +1,8 @@
 import React from "react";
+import { HashRouter, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import { postFeedback } from "../redux/actions/feedback";
-import { Spin, Button, Card } from "antd";
+import { Button, Card, Spin } from "antd";
+import showFeedbackModal from "./FeedbackModal";
 
 class App extends React.Component {
 	buttonHandle() {
@@ -25,13 +26,9 @@ class App extends React.Component {
 		);
 	}
 }
-
-const mapDispatchToProps = dispatch => {
-	return {
-		onPost: (title, body) => {
-			dispatch(postFeedback(title, body));
-		}
-	};
+const map = state => {
+	console.log(state);
+	return state;
 };
 
 const mapStateToProps = state => {
@@ -41,6 +38,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+	mapStateToProps
 )(App);
