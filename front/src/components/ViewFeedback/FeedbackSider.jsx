@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Layout, Menu, Icon, Input, Select } from "antd";
-import Router from "react-router"
+import Router from "react-router";
 const { Sider } = Layout;
 
 const { SubMenu } = Menu;
@@ -9,50 +9,40 @@ const { Option } = Select;
 const children = [];
 
 export default class FeedbackSider extends React.Component {
-    // constructor(props){
-    //     super(props)
-    //     if(window.innerWidth < "700px"){
-    //         console.log("dipa")
-    //         this.state= {collapsed:true, sliderWidth:"40vw"}
-    //     }
-    //     else{
-    //         this.state= {collapsed:false, sliderWidth:"15vw"}
-    //     }
-    // }
-	state = {collapsed:false, sliderWidth:"15vw"}
+	
+	state = { collapsed: false, sliderWidth: "15vw" };
 
 	onCollapse = collapsed => {
 		this.setState({ collapsed });
 	};
-    onSelect = (val,opt)=>{
-        
-            setTimeout(()=>{
-            document.querySelector(`[title=${val}]`).style.width="45%"
-            // document.querySelector(`[title=${val}]`).style.display="flex"
-            // document.querySelector(`[title=${val}]`).style.justifyContent="space-between"
-            // document.querySelector(`[title=${val}]`).style.alignItems="space-between"
-        
-        },1)
-    
-    }
-  
-	componentWillMount(){
-        console.log(window.innerWidth)
-        if(window.innerWidth < 700){
-            this.setState({collapsed:true, sliderWidth:"40vw"})
-        }
-	    for (let i = 10; i < 18; i++) {
-	        children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
-	    }
+	onSelect = (val, opt) => {
+		setTimeout(() => {
+			document.querySelector(`[title=${val}]`).style.width="calc(15vw + 20px)";
+		}, 1);
+	};
+
+	componentWillMount() {
+		if (window.innerWidth < 700) {
+			this.setState({ collapsed: true, sliderWidth: "50vw" });
+		}
+		for (let i = 10; i < 18; i++) {
+			children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
+		}
 	}
 
 	render() {
 		const selectStyle = !this.state.collapsed
-            ? { width: "80%", border: "red solid 2px"}
+			? { width: "80%" }
 			: { width: "80%", display: "none" };
 		return (
 			<Layout style={{ minHeight: "100vh" }}>
-				<Sider width={this.state.sliderWidth} collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+				<Sider
+                  
+                    style ={{width:"auto"}}
+					collapsible
+					collapsed={this.state.collapsed}
+					onCollapse={this.onCollapse}
+				>
 					<div className="logo" />
 					<Menu theme="dark" defaultSelectedKeys={["1"]} mode="vertical">
 						<Menu.Item
@@ -68,13 +58,11 @@ export default class FeedbackSider extends React.Component {
 							<Icon type="search" />
 
 							<Select
-
 								style={selectStyle}
 								mode="multiple"
 								placeholder="Select category"
-				
-							onSelect = {this.onSelect}
-                            >
+								onSelect={this.onSelect}
+							>
 								{children}
 							</Select>
 						</Menu.Item>
