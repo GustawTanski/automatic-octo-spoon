@@ -43,11 +43,10 @@ class FeedbackMain extends React.Component {
 				extra={<FeedbackInfo item={feedback} />}
 			>
 				{description}...
-			</Card>
+			</Card>;
 		});
 		return listOfCards;
-
-	}
+	};
 	// 	const helpArr = [
 	// 		{
 	// 			title: "FEEDBACK ONE",

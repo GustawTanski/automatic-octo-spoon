@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Layout, Menu, Icon, Select } from "antd";
 import Router from "react-router";
-import { getUsers } from '../../redux/actions/getUsers';
+import { getUsers } from "../../redux/actions/getUsers";
 const { Sider } = Layout;
 
 const { SubMenu } = Menu;
@@ -109,9 +109,10 @@ class FeedbackSider extends React.Component {
 		);
 	}
 }
-const mapStateToProps = (state) => {
-	return { users: state.users }
+const mapStateToProps = state => {
+	return { users: state.users };
 };
 export default connect(
-	mapStateToProps, { getUsers }
+	mapStateToProps,
+	{ getUsers }
 )(FeedbackSider);
