@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Layout, Menu, Icon, Input, Select } from "antd";
+import { Layout, Menu, Icon, Select } from "antd";
 import Router from "react-router";
-import {} from "../../redux/actions/feedback";
+import { } from "../../redux/actions/feedback";
 const { Sider } = Layout;
 
 const { SubMenu } = Menu;
@@ -20,7 +20,9 @@ class FeedbackSider extends React.Component {
 			document.querySelector(`[title=${val}]`).style.width = "calc(15vw + 20px)";
 		}, 1);
 	};
+	componentDidMount() {
 
+	}
 	componentWillMount() {
 		if (window.innerWidth < 700) {
 			this.setState({ collapsed: true, sliderWidth: "100vw" });
